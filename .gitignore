@@ -40,6 +40,7 @@ frontend/plugins/
 frontend/plugins/android.json
 frontend/plugins/ios.json
 frontend/$RECYCLE.BIN/
+frontend/package-lock.json/
 
 *.DS_Store
 Thumbs.db
