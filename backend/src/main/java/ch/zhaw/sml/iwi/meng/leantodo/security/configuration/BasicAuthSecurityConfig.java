@@ -29,13 +29,12 @@ public class BasicAuthSecurityConfig extends WebSecurityConfigurerAdapter {
     
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-        
-      auth.jdbcAuthentication().dataSource(jdbcTemplate.getDataSource())
+    auth.jdbcAuthentication().dataSource(jdbcTemplate.getDataSource())
         .usersByUsernameQuery(
-            "SELECT LOGIN_NAME, PASSWORD_HASH, true FROM USER WHERE LOGIN_NAME=?")
+            "SELECT login_name, password_hash, true FROM user WHERE login_name=?")
         .authoritiesByUsernameQuery(
-            "SELECT USER_LOGIN_NAME, ROLES_ROLE_NAME FROM USER_ROLES WHERE USER_LOGIN_NAME=?")
-        .passwordEncoder(passwordEncoder());      
+            "SELECT user_login_name, roles_role_name FROM user_roles WHERE login_name=?")
+        .passwordEncoder(passwordEncoder());       
     }   
     
     @Override
