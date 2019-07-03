@@ -1,7 +1,13 @@
 version: '3'
 
 services:
-  leantodo:
+  leanfront:
+    build: ./frontend
+    depends_on:
+      - leanback
+    ports:
+      - 8100:80
+  leanback:
     build: ./backend
     depends_on:
       - db
