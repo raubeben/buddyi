@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  leantodo:
+    build: ./backend
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/leandb?useSSL=false&requireSSL=false
+      - SPRING_DATASOURCE_USERNAME=leanuser
+      - SPRING_DATASOURCE_PASSWORD=leanpass
+      - SPRING_DATASOURCE_DRIVER-CLASS-NAME=com.mysql.jdbc.Driver
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create-drop
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5Dialect    
+    ports:
+      - 8080:8080
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpass
+      - MYSQL_USER=leanuser
+      - MYSQL_PASSWORD=leanpass
+      - MYSQL_DATABASE=leandb
