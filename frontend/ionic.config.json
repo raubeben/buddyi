@@ -1,5 +1,7 @@
 {
-  "name": "IonicTabsB",
-  "integrations": {},
-  "type": "angular"
+  "name": "frontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
 }
