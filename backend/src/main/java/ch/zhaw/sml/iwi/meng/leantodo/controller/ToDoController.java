@@ -32,6 +32,7 @@ public class ToDoController {
             return;
         }
         // Ok, let's overwrite the existing toDo.
+        toDo.setOwner(owner); // Set the owner because this property is ignored in the Rest API
         toDoRepository.save(toDo);
     }
     
