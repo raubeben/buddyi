@@ -28,7 +28,7 @@
                 <ion-button
                   color="success"
                   v-if="todo.done && !todo.archived"
-                  @click="archive(todo)"
+                  @click="archiveTodo(todo)"
                   >Archive</ion-button
                 >
               </ion-col>
@@ -36,16 +36,16 @@
           </ion-grid>
         </ion-item>
       </ion-list>
-      <!--       <ion-item>
+      <ion-item>
         <ion-input
           type="text"
           placeholder="New Todo Title"
-          v-model="newToDo.title"
+          v-model="newTodo.title"
         ></ion-input>
-      </ion-item> -->
-      <!--       <div padding>
-        <ion-button @click="addToDo()">Add New ToDo</ion-button>
-      </div> -->
+      </ion-item>
+      <div padding>
+        <ion-button @click="addTodo()">Add New ToDo</ion-button>
+      </div>
     </ion-content>
   </ion-page>
 </template>
@@ -63,8 +63,8 @@ import {
   IonItem,
   IonList,
   IonButton,
-} from /*   IonInput,
- */ "@ionic/vue";
+  IonInput,
+} from "@ionic/vue";
 import { useTodos } from "@/composables/useTodos";
 
 export default {
@@ -81,13 +81,12 @@ export default {
     IonItem,
     IonList,
     IonButton,
-    /*     IonInput,
-     */
+    IonInput,
   },
   setup() {
-    const { todos, getTodos, addTodo, finishTodo } = useTodos();
+    const { newTodo, todos, getTodos, addTodo, finishTodo, archiveTodo } = useTodos();
 
-    return { todos, getTodos, addTodo, finishTodo };
+    return { newTodo, todos, getTodos, addTodo, finishTodo, archiveTodo };
   },
 };
 </script>
