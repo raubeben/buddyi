@@ -3,8 +3,6 @@ import { API_ROOT } from "@/config/development";
 import { UserAuthResponse } from '@/model/userAuthResponse';
 
 export async function getToken(username: string, password: string): Promise<UserAuthResponse> {
-    console.log(username);
-    console.log(password);
 
     const config = {
         headers: {
@@ -18,5 +16,4 @@ export async function getToken(username: string, password: string): Promise<User
     } catch (error) {
         return error;
     }
-
 }

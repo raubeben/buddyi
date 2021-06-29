@@ -1,9 +1,6 @@
 import { getToken } from '@/api/auth';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-//import { UserAuthResponse } from "@/model/userAuthResponse";
-//import { ref, onMounted, watch } from 'vue'
-
 
 export function useLogin() {
 
