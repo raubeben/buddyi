@@ -1,2 +1,2 @@
 # leantodo
-MEng 2019 Demo Application (ToDo-Manager) Ionic4 / Java11 / Spring / JWT
+MEng 2021 Demo Application (ToDo-Manager) Ionic / Java / Spring / JWT
