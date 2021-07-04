@@ -6,7 +6,7 @@ import Login from '../views/Login.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/tabs/todo'
+    redirect: '/login'
   },
   {
     path: '/login',
