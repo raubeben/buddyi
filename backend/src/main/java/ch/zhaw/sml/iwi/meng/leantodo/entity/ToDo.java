@@ -6,13 +6,10 @@ import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.Data;
-
 /**
  * ToDo
  */
 @Entity
-@Data
 public class ToDo {
     
     @Id
