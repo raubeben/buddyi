@@ -25,6 +25,7 @@ public class LeanToDo implements CommandLineRunner {
 
     public static void main(String[] args) {
         SpringApplication.run(LeanToDo.class, args);
+        
     }
 
     @Autowired
