@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import ch.zhaw.sml.iwi.meng.leantodo.entity.Project;
 import ch.zhaw.sml.iwi.meng.leantodo.entity.ProjectRepository;
 import ch.zhaw.sml.iwi.meng.leantodo.entity.ToDo;
-import ch.zhaw.sml.iwi.meng.leantodo.entity.ToDoRepository;
 
 @Component
 public class ProjectController {
@@ -16,8 +15,7 @@ public class ProjectController {
 
     @Autowired
     private ProjectRepository projectRepository;
-    @Autowired
-    private ToDoRepository toDoRepository;
+
 
 
     public List<Project> listAllProjects(String loginName) {
