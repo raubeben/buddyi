@@ -10,7 +10,7 @@ export async function getAllToDos(): Promise<ToDo[]>   {
         const response = await axios.get(API_ROOT + '/api/todo', config);
         return response.data;
     } catch (error) {
-        return error;   
+        return <any>error;   
     }
 }
 

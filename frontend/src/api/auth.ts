@@ -14,6 +14,6 @@ export async function getToken(username: string, password: string): Promise<User
         const response = await axios.get(API_ROOT + '/auth/token', config);
         return response.data;
     } catch (error) {
-        return error;
+        return <any>error;
     }
 }
