@@ -31,7 +31,7 @@ public class BasicAuthSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
     auth.jdbcAuthentication().dataSource(jdbcTemplate.getDataSource())
         .usersByUsernameQuery(
-            "SELECT login_name, password_hash, true FROM user WHERE login_name=?")
+            "SELECT login_name, password_hash, true FROM usertable WHERE login_name=?")
         .authoritiesByUsernameQuery(
             "SELECT user_login_name, roles_role_name FROM user_roles WHERE user_login_name=?")
         .passwordEncoder(passwordEncoder());       
