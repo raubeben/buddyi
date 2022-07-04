@@ -23,8 +23,8 @@ public class ProjectEndpoint {
     private ProjectController projectController;
 
     @RequestMapping(path = "/api/project", method = RequestMethod.GET)
-    @PreAuthorize("isAuthenticated() AND hasRole('USER')")
-    public List<Project> getProjects(Principal principal) {
+    @PreAuthorize("isAuthenticated() AND hasRole('USER')") // muss mindestens ein User sein für Zugriff
+    public List<Project> getProjects(Principal principal) { // Principal = Autentifizierter Nutzer 
         return projectController.listAllProjects(principal.getName());
     }
     
