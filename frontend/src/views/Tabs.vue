@@ -8,9 +8,9 @@
           <ion-label>Todo</ion-label>
         </ion-tab-button>
           
-        <ion-tab-button tab="projects" href="/tabs/projects">
+        <ion-tab-button tab="events" href="/tabs/events">
           <ion-icon :icon="apps" />
-          <ion-label>Projects</ion-label>
+          <ion-label>Events</ion-label>
         </ion-tab-button>
         
         <ion-tab-button tab="timerecord" href="/tabs/timerecord">
