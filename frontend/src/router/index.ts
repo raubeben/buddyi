@@ -29,8 +29,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/Events.vue')
       },
       {
-        path: 'timerecord',
-        component: () => import('@/views/Timerecord.vue')
+        path: 'profile',
+        component: () => import('@/views/ProfilePage.vue')
       }
     ]
   }
