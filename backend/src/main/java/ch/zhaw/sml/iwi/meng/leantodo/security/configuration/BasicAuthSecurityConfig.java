@@ -33,7 +33,7 @@ public class BasicAuthSecurityConfig extends WebSecurityConfigurerAdapter {
         .usersByUsernameQuery(
             "SELECT login_name, password_hash, true FROM usertable WHERE login_name=?")
         .authoritiesByUsernameQuery(
-            "SELECT user_login_name, roles_role_name FROM user_roles WHERE user_login_name=?")
+            "SELECT user_login_name, roles_role_name FROM usertable_roles WHERE user_login_name=?")
         .passwordEncoder(passwordEncoder());       
     }   
     
