@@ -24,11 +24,11 @@
             </ion-row>
           </ion-grid>
         </ion-item>
-        <ion-item :key="todo" v-for="todo in todos">
+        <ion-item :key="veran" v-for="veran in veranstaltungen">
           <ion-grid>
             <ion-row>
               <ion-col>
-                {{ todo.title }}
+                {{ veran.beschreibung }}
               </ion-col>
               <ion-col>
                 Beschreibung
@@ -39,40 +39,14 @@
               <ion-col>
                 Datum & Zeit
               </ion-col>
-              <ion-col>
-                <ion-button
-                  color="success"
-                  v-if="!todo.done && !todo.archived"
-                  @click="finishTodo(todo)"
-                  >Sign In</ion-button
-                >
-                <ion-button
-                  color="success"
-                  v-if="todo.done && !todo.archived"
-                  @click="archiveTodo(todo)"
-                  >Archive</ion-button
-                >
-              </ion-col>
+              
             </ion-row>
           </ion-grid>
         </ion-item>
       </ion-list>
-      <ion-item>
-        <ion-input
-          type="text"
-          placeholder="New Event Title"
-          v-model="newTodo.title"
-        ></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input
-          type="text"
-          placeholder="New Event Beschreibung"
-          v-model="newTodo.title"
-        ></ion-input>
-      </ion-item>
+      
       <div padding>
-        <ion-button @click="addTodo()">Add New Event</ion-button>
+        <ion-button>Add New Event</ion-button>
       </div>
       <div padding>
         <ion-img src="assets/img/hintergrund_events.jpg"></ion-img>
@@ -94,10 +68,9 @@ import {
   IonItem,
   IonList,
   IonButton,
-  IonInput,
   IonImg
 } from "@ionic/vue";
-import { useTodos } from "@/composables/useTodos";
+import { useVeranstaltungen } from "@/composables/useVeranstaltungen";
 
 export default {
   name: "Events",
@@ -113,14 +86,13 @@ export default {
     IonItem,
     IonList,
     IonButton,
-    IonInput,
     IonImg,
   },
   setup() {
-    const { newTodo, todos, getTodos, addTodo, finishTodo, archiveTodo } =
-      useTodos();
+    const { newVeranstaltung, veranstaltungen, getVeranstaltungen, } =
+      useVeranstaltungen();
 
-    return { newTodo, todos, getTodos, addTodo, finishTodo, archiveTodo };
+    return { newVeranstaltung, veranstaltungen, getVeranstaltungen };
   },
 };
 </script>
