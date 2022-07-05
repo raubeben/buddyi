@@ -26,7 +26,7 @@
       <!-- Event Titel mit Badge -->
       <ion-item>
         <ion-label><b>Bevorstehende Events</b></ion-label>
-        <ion-badge slot="end">Anzahl eingetragener Events: {{ userveranstaltung.value }}</ion-badge>
+        <ion-badge slot="end">Anzahl eingetragener Events: </ion-badge>
       </ion-item>
 
       <!-- Liste der Events -->
@@ -44,7 +44,7 @@
         </ion-item>
         <!-- Alle eingetragenen Events als Liste-->
         <!-- Router link noch einfügen: :router-link="'/tabs/tasks/' + task._id" bsp. von task-list-->
-        <ion-item button v-bind:key="uevent" v-for="uevent in userveranstaltung">
+        <ion-item button v-bind:key="uevent" v-for="uevent in veranst">
           <ion-label>{{ uevent.activity }}</ion-label>
           <ion-label>{{ uevent.beschreibung }}</ion-label>
           <ion-label>{{ uevent.ort }}</ion-label>
@@ -67,7 +67,7 @@ import {
   IonBadge,
   IonItem
 } from '@ionic/vue';
-import { getUserevents } from '@/composables/getUserevents';
+import { getVeranstaltung } from '@/composables/getVeranstaltung';
 
 export default {
   name: 'Profile',
@@ -83,9 +83,9 @@ export default {
     IonItem
   },
   setup() {
-    const { userveranstaltung } = getUserevents();
+    const { veranst } = getVeranstaltung();
 
-    return { userveranstaltung }
+    return { veranst }
   },
 };
 </script>
