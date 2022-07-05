@@ -8,14 +8,14 @@
           <ion-label>Todo</ion-label>
         </ion-tab-button>
           
-        <ion-tab-button tab="projects" href="/tabs/projects">
+        <ion-tab-button tab="events" href="/tabs/events">
           <ion-icon :icon="apps" />
-          <ion-label>Projects</ion-label>
+          <ion-label>Events</ion-label>
         </ion-tab-button>
         
-        <ion-tab-button tab="timerecord" href="/tabs/timerecord">
-          <ion-icon :icon="send" />
-          <ion-label>Timerecord</ion-label>
+        <ion-tab-button tab="profile" href="/tabs/profile">
+          <ion-icon :icon="person" />
+          <ion-label>Profil</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
@@ -24,7 +24,7 @@
 
 <script lang="ts">
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
-import { flash, apps, send } from 'ionicons/icons';
+import { flash, apps, person } from 'ionicons/icons';
 
 export default {
   name: 'Tabs',
@@ -33,7 +33,7 @@ export default {
     return {
       flash, 
       apps, 
-      send,
+      person,
     }
   }
 }
