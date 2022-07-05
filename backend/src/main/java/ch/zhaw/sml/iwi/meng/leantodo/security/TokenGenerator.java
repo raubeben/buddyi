@@ -32,7 +32,7 @@ public class TokenGenerator {
         if (user == null) {
             return null;
         }
-        userAuthResponse.setLoginName(user.getLoginName());
+        userAuthResponse.setLoginName(user.getBenutzername());
 
         Map<String, Object> claimsMap = new HashMap<>();
         String rolesCSV = "";
@@ -52,7 +52,7 @@ public class TokenGenerator {
 
         String token = Jwts.builder()
             .setClaims(new HashMap<>())
-            .setSubject(user.getLoginName())
+            .setSubject(user.getBenutzername())
             .addClaims(claimsMap)
             .setIssuedAt(creationDate)
             .setExpiration(expirationDate)
