@@ -14,3 +14,14 @@ export async function getAllVeranstaltungen(): Promise<Veranstaltung[]>   {
     }
 }
 
+export async function getAllVeranstaltungenUser(): Promise<Veranstaltung[]>   { 
+    const config = {        
+        withCredentials: true
+    }
+    try {
+        const response = await axios.get(API_ROOT + '/api/veranstaltungen/user', config);
+        return response.data;
+    } catch (error) {
+        return <any>error;   
+    }
+}
