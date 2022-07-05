@@ -31,11 +31,21 @@ public class BasicAuthSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
     auth.jdbcAuthentication().dataSource(jdbcTemplate.getDataSource())
         .usersByUsernameQuery(
+            "SELECT benutzername, password_hash, true FROM usertable WHERE benutzername=?")
+        .authoritiesByUsernameQuery(
+            "SELECT user_benutzername, roles_role_name FROM usertable_roles WHERE user_benutzername=?")
+        .passwordEncoder(passwordEncoder());       
+    }   
+
+    /*@Autowired
+    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+    auth.jdbcAuthentication().dataSource(jdbcTemplate.getDataSource())
+        .usersByUsernameQuery(
             "SELECT login_name, password_hash, true FROM usertable WHERE login_name=?")
         .authoritiesByUsernameQuery(
             "SELECT user_login_name, roles_role_name FROM usertable_roles WHERE user_login_name=?")
         .passwordEncoder(passwordEncoder());       
-    }   
+    }   */
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {

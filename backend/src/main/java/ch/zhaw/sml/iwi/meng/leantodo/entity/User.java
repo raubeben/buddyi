@@ -11,11 +11,16 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="USERTABLE")
+@Table(name = "USERTABLE")
 public class User {
 
     @Id
-    private String loginName;
+    private String benutzername;
+
+    private String geschlecht;
+    private String vorname;
+    private String name;
+    private String telefonnummer;
 
     @JsonIgnore
     private String passwordHash;
@@ -23,47 +28,60 @@ public class User {
     @ManyToMany
     private List<Role> roles = new ArrayList<>();
 
-    /**
-     * @return the loginName
-     */
-    public String getLoginName() {
-        return loginName;
+    public String getBenutzername() {
+        return benutzername;
     }
 
-    /**
-     * @param loginName the loginName to set
-     */
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
+    public void setBenutzername(String benutzername) {
+        this.benutzername = benutzername;
     }
 
-    /**
-     * @return the passwordHash
-     */
+    public String getGeschlecht() {
+        return geschlecht;
+    }
+
+    public void setGeschlecht(String geschlecht) {
+        this.geschlecht = geschlecht;
+    }
+
+    public String getVorname() {
+        return vorname;
+    }
+
+    public void setVorname(String vorname) {
+        this.vorname = vorname;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTelefonnummer() {
+        return telefonnummer;
+    }
+
+    public void setTelefonnummer(String telefonnummer) {
+        this.telefonnummer = telefonnummer;
+    }
+
     public String getPasswordHash() {
         return passwordHash;
     }
 
-    /**
-     * @param passwordHash the passwordHash to set
-     */
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
     }
 
-    /**
-     * @return the roles
-     */
     public List<Role> getRoles() {
         return roles;
     }
 
-    /**
-     * @param roles the roles to set
-     */
     public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
-
 
 }
