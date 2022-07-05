@@ -16,11 +16,11 @@
         <ion-item>
           <ion-grid>
             <ion-row>
-              <ion-col><b>Titel</b></ion-col>
+              <ion-col><b>ID</b></ion-col>
+              <ion-col><b>Event</b></ion-col>
               <ion-col><b>Beschreibung</b></ion-col>
-              <ion-col><b>Wo</b></ion-col>
-              <ion-col><b>Wann</b></ion-col>
-              <ion-col><b>Teilnehmen</b></ion-col>
+              <ion-col><b>Ort</b></ion-col>
+              <ion-col><b>Teilnehmer</b></ion-col>
             </ion-row>
           </ion-grid>
         </ion-item>
@@ -28,16 +28,19 @@
           <ion-grid>
             <ion-row>
               <ion-col>
+                {{ veran.id }}
+              </ion-col>
+              <ion-col>
+                {{ veran.activity }}
+              </ion-col>
+              <ion-col>
                 {{ veran.beschreibung }}
               </ion-col>
               <ion-col>
-                Beschreibung
+                {{ veran.ort }}
               </ion-col>
               <ion-col>
-                Ort
-              </ion-col>
-              <ion-col>
-                Datum & Zeit
+                <ul><li :key="user" v-for="user in veran.users">{{user.vorname}}</li></ul>
               </ion-col>
               
             </ion-row>
