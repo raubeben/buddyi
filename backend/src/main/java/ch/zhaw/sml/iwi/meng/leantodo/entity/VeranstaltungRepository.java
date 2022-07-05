@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface VeranstaltungRepository extends JpaRepository<Veranstaltung,Long> {
 
 
-    @Query("SELECT DISTINCT v FROM Veranstaltungen v")
-    public List<Veranstaltung> hugo();
+    @Query("SELECT DISTINCT v FROM Veranstaltung v WHERE ?1 MEMBER OF v.users")
+    public List<Veranstaltung> findByUser(User user);
     
 }

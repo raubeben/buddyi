@@ -24,7 +24,7 @@ public class VeranstaltungController {
     }
 
     public List<Veranstaltung> listAllVeranstalungenByUser(String benutzername){
-       return veranstaltungRepository.hugo();
+       return veranstaltungRepository.findByUser(userRepository.findById(benutzername).get());
        
     }
     

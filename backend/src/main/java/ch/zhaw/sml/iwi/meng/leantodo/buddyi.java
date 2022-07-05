@@ -24,10 +24,10 @@ import ch.zhaw.sml.iwi.meng.leantodo.entity.VeranstaltungRepository;
 @SpringBootApplication
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
-public class buddyi implements CommandLineRunner {
+public class Buddyi implements CommandLineRunner {
 
     public static void main(String[] args) {
-        SpringApplication.run(buddyi.class, args);
+        SpringApplication.run(Buddyi.class, args);
 
     }
 
@@ -79,34 +79,32 @@ public class buddyi implements CommandLineRunner {
         r.setRoleName("ROLE_USER");
         roleRepository.save(r);
 
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         Veranstaltung v = new Veranstaltung();
         v.setBeschreibung("Cooler Abend bla");
         v.setActivity("Fussball");
         v.setOrt("Winterthur");
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         Date date = format.parse("04/07/2022");
         v.setDatum(date);
 
-        /* 
         Veranstaltung v2 = new Veranstaltung();
-        v2.setBeschreibung("Schnell rennen");
+        v2.setBeschreibung("Schneller als der Wind");
         v2.setActivity("Jogging");
         v2.setOrt("Zürich");
-        Date date2 = format.parse("11/07/2022");
+        Date date2 = format.parse("24/07/2022");
         v2.setDatum(date2);
-        */
-        
+
         u.getRoles().add(r);
         u2.getRoles().add(r);
 
         userRepository.save(u);
         userRepository.save(u2);
 
-        v.getUser().add(u);
-        v.getUser().add(u2);
-        //v2.getUser().add(u);
+        v.getUsers().add(u);
+        v.getUsers().add(u2);
+        v2.getUsers().add(u);
 
         veranstaltungRepository.save(v);
-        //veranstaltungRepository.save(v2);
+        veranstaltungRepository.save(v2);
     }
 }

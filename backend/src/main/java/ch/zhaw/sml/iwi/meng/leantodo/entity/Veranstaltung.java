@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -28,7 +27,7 @@ public class Veranstaltung {
     private Date datum;
 
     @ManyToMany
-    private List<User> user = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -70,16 +69,13 @@ public class Veranstaltung {
         this.datum = datum;
     }
 
-    public List<User> getUser() {
-        return user;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setUser(List<User> user) {
-        this.user = user;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
-
     
-
-
     
 }
