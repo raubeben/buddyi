@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-header>
-      <ion-toolbar>
+      <ion-toolbar color="secondary">
         <ion-title>Events</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -60,12 +60,22 @@
       <ion-item>
         <ion-input
           type="text"
-          placeholder="New Todo Title"
+          placeholder="New Event Title"
+          v-model="newTodo.title"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          type="text"
+          placeholder="New Event Beschreibung"
           v-model="newTodo.title"
         ></ion-input>
       </ion-item>
       <div padding>
         <ion-button @click="addTodo()">Add New Event</ion-button>
+      </div>
+      <div padding>
+        <ion-img src="assets/img/hintergrund_events.jpg"></ion-img>
       </div>
     </ion-content>
   </ion-page>
@@ -85,6 +95,7 @@ import {
   IonList,
   IonButton,
   IonInput,
+  IonImg
 } from "@ionic/vue";
 import { useTodos } from "@/composables/useTodos";
 
@@ -103,6 +114,7 @@ export default {
     IonList,
     IonButton,
     IonInput,
+    IonImg,
   },
   setup() {
     const { newTodo, todos, getTodos, addTodo, finishTodo, archiveTodo } =
