@@ -2,13 +2,13 @@ import { getAllToDos, updateToDo, addNewToDo } from '@/api/todos';
 import { ToDo } from '@/model/todo';
 import { onMounted, ref } from 'vue';
 
-export function useTodos() {
+export function useTodos() { // eine Funktion pro Composable (Name = Dateiname)
 
     const todos = ref<ToDo[]>([]);
 
-    const newTodo = ref<ToDo>({});
+    const newTodo = ref<ToDo>({}); // Referenz vom Typ ToDo
 
-    const getTodos = async () => {
+    const getTodos = async () => { // ausgelagerte Funktionen immer mit const 
         try {
             todos.value = await getAllToDos();
         } catch (error) {
