@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,7 +27,7 @@ public class Veranstaltung {
     @Temporal(TemporalType.TIMESTAMP)
     private Date datum;
 
-    @OneToMany
+    @ManyToMany
     private List<User> user = new ArrayList<>();
 
     public Long getId() {

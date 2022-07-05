@@ -7,9 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface VeranstaltungRepository extends JpaRepository<Veranstaltung,String> {
+public interface VeranstaltungRepository extends JpaRepository<Veranstaltung,Long> {
 
-    //@Query("SELECT v FROM Veranstaltungen AS v WHERE ?1 IN v.user")
-    //public List<Veranstaltung> findByUser(String user);
+
+    @Query("SELECT DISTINCT v FROM Veranstaltungen v")
+    public List<Veranstaltung> hugo();
     
 }

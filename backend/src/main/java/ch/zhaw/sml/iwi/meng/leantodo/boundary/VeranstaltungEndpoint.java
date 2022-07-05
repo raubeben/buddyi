@@ -23,12 +23,10 @@ public class VeranstaltungEndpoint {
         return veranstaltungController.listAllVeranstaltungen();
     }
 
-    /* 
     @RequestMapping(path = "/api/veranstaltungen/user", method = RequestMethod.GET)
     @PreAuthorize ("isAuthenticated() AND hasRole('USER')")
     public List<Veranstaltung> getAllVeranstaltungenByUser(Principal principal) {
         return veranstaltungController.listAllVeranstalungenByUser(principal.getName());
     }
-    */
-    
+        
 }
