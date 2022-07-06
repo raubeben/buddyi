@@ -29,6 +29,10 @@ public class VeranstaltungController {
        
     }
 
+    public Veranstaltung checkVeranstaltungById (Long id){
+        return veranstaltungRepository.findById(id).get();
+    }
+
     public void createNewEvent(Veranstaltung veranstaltung, String benutzername){
         User user = userRepository.findById(benutzername).get();
         Veranstaltung veranstaltung2 = veranstaltung;
