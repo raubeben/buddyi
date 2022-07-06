@@ -75,6 +75,14 @@ public class Buddyi implements CommandLineRunner {
         u2.setVorname("Paulo");
         u2.setTelefonnummer("+41 52 111 22 33");
 
+        User u3 = new User();
+        u3.setBenutzername("derAlien");
+        u3.setPasswordHash(new BCryptPasswordEncoder().encode("alien"));
+        u3.setGeschlecht("w");
+        u3.setName("Meier");
+        u3.setVorname("Erika");
+        u3.setTelefonnummer("+41 52 999 88 77");
+
         Role r = new Role();
         r.setRoleName("ROLE_USER");
         roleRepository.save(r);
@@ -95,7 +103,7 @@ public class Buddyi implements CommandLineRunner {
         v2.setDatum(date2);
 
         Veranstaltung v3 = new Veranstaltung();
-        v3.setBeschreibung("Smash iit");
+        v3.setBeschreibung("Smash it");
         v3.setActivity("Volleyball");
         v3.setOrt("Schaffhausen");
         Date date3 = format.parse("16/08/2022");
@@ -103,9 +111,11 @@ public class Buddyi implements CommandLineRunner {
 
         u.getRoles().add(r);
         u2.getRoles().add(r);
+        u3.getRoles().add(r);
 
         userRepository.save(u);
         userRepository.save(u2);
+        userRepository.save(u3);
 
         v.getUsers().add(u);
         v.getUsers().add(u2);

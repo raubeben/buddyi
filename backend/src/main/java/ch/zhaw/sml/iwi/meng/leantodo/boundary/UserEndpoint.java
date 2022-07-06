@@ -4,6 +4,7 @@ import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +21,13 @@ public class UserEndpoint {
     @RequestMapping(path = "/api/me", method = RequestMethod.GET)
     @PreAuthorize("isAuthenticated() AND hasRole('USER')")
     public User me(Principal principal) {
-        return userController.getMyInformations(principal.getName());
+        return userController.getInformations(principal.getName());
+    }
+
+    @RequestMapping(path = "/api/{user}", method = RequestMethod.GET)
+    @PreAuthorize("isAuthenticated() AND hasRole('USER')")
+    public User lookForOtherUser (@PathVariable (name = "user") String benutzername){
+        return userController.getInformations(benutzername);
     }
 
 }

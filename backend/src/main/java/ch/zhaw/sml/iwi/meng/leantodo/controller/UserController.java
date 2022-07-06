@@ -13,7 +13,8 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    public User getMyInformations(String benutzername){
+    public User getInformations(String benutzername){
         return userRepository.findById(benutzername).get();
     }
+
 }

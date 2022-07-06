@@ -13,7 +13,7 @@ export function useLogin() {
             const token = await getToken(username.value, password.value);
             // TODO: do something meaningful with the token :-)
             //console.log(token)
-            router.push('/tabs/todo')
+            router.push('/tabs/profile')
         } catch (error) {
             console.log(error)
         }
