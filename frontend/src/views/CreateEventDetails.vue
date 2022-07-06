@@ -3,6 +3,9 @@
     <ion-header>
       <ion-toolbar color="secondary">
         <ion-title>Create New Event</ion-title>
+        <ion-buttons slot="start">
+          <ion-back-button default-href="/tabs/events"></ion-back-button>
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
@@ -62,14 +65,13 @@
                   v-model="newVeranstaltung.datum"
                 ></ion-input>
               </ion-col>
-        
             </ion-row>
           </ion-grid>
         </ion-item>
       </ion-list>
 
       <div padding>
-        <ion-button @click="addVeranstaltung()">Create</ion-button>
+        <ion-button @click="addVeranstaltung(); presentAlert()">Create</ion-button>
       </div>
     </ion-content>
   </ion-page>
@@ -88,7 +90,9 @@ import {
   IonGrid,
   IonRow,
   IonLabel,
-  IonInput
+  IonInput,
+  IonBackButton,
+  alertController,
 } from "@ionic/vue";
 import { useVeranstaltungen } from "@/composables/useVeranstaltungen";
 
@@ -106,13 +110,37 @@ export default {
     IonGrid,
     IonRow,
     IonLabel,
-    IonInput
+    IonInput,
+    IonBackButton,
+    
+  },
+
+  methods: {
+    async presentAlert() {
+      const alert = await alertController.create({
+        header: "Alert",
+        subHeader: "Important message",
+        message: "Dein Event wurde erstellt!",
+        buttons: ["OK"],
+      });
+
+      await alert.present();
+    },
   },
   setup() {
-    const { newVeranstaltung, veranstaltungen, getVeranstaltungen, addVeranstaltung } =
-      useVeranstaltungen();
+    const {
+      newVeranstaltung,
+      veranstaltungen,
+      getVeranstaltungen,
+      addVeranstaltung,
+    } = useVeranstaltungen();
 
-    return { newVeranstaltung, veranstaltungen, getVeranstaltungen, addVeranstaltung };
+    return {
+      newVeranstaltung,
+      veranstaltungen,
+      getVeranstaltungen,
+      addVeranstaltung,
+    };
   },
 };
 </script>
