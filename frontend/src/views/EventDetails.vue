@@ -40,7 +40,6 @@ export default {
   setup() {
     const { newTodo, todos, getTodos, addTodo, finishTodo, archiveTodo } = useTodos();
     const route = useRoute();
-    const { id } = route.params;
 
 
     return { newTodo, todos, getTodos, addTodo, finishTodo, archiveTodo };
