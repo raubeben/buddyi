@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +24,12 @@ public class VeranstaltungEndpoint {
     @PreAuthorize ("isAuthenticated() AND hasRole('USER')")
     public List<Veranstaltung> getAllVeranstaltungen() {
         return veranstaltungController.listAllVeranstaltungen();
+    }
+
+    @RequestMapping(path = "/api/veranstaltungen/{veranstaltungsId}", method = RequestMethod.GET)
+    @PreAuthorize ("isAuthenticated() AND hasRole('USER')")
+    public Veranstaltung getVeranstaltungById(@PathVariable(name="veranstaltungsId") Long verId){
+        return veranstaltungController.checkVeranstaltungById(verId);
     }
 
     @RequestMapping(path = "/api/veranstaltungen/user", method = RequestMethod.GET)
