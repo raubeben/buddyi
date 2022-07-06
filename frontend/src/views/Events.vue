@@ -49,7 +49,7 @@
       </ion-list>
       
       <div padding>
-        <ion-button>Add New Event</ion-button>
+        <ion-button router-link="/tabs/events/create">Add New Event</ion-button>
       </div>
       <div padding>
         <ion-img src="assets/img/hintergrund_events.jpg"></ion-img>
