@@ -41,6 +41,22 @@ public class VeranstaltungController {
         veranstaltungRepository.save(veranstaltung2);
     }
 
+    public String removeParticipant(Veranstaltung veranstaltung, String benutzername){
+        User user = userRepository.findById(benutzername).get();
+        Veranstaltung v = veranstaltungRepository.findById(veranstaltung.getId()).get();
+
+        if (v.getUsers().contains(user)) {
+            v.getUsers().remove(user);
+            veranstaltungRepository.save(v);
+            String messagePositive = "Du hast dich vom Event entfernt.";
+            return messagePositive;
+        } else {
+            String messageNegative = "Du bist nicht im Event eingetragen.";
+            return messageNegative;
+        }
+
+    }
+
     public String updateEventParticipant(Veranstaltung veranstaltung, String benutzername){
         User user = userRepository.findById(benutzername).get();
         Veranstaltung v = veranstaltungRepository.findById(veranstaltung.getId()).get();
