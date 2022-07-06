@@ -1,6 +1,6 @@
 import { getAllVeranstaltungen, addNewVeranstaltung } from "@/api/veranstaltungen";
 import { Veranstaltung } from "@/model/veranstaltung";
-import { onMounted, ref } from 'vue';
+import { onUpdated, ref } from 'vue';
 
 export function useVeranstaltungen() {
     const veranstaltungen = ref<Veranstaltung[]>([]);
@@ -25,7 +25,7 @@ export function useVeranstaltungen() {
         }
     }
 
-    onMounted(getVeranstaltungen);
+    onUpdated(getVeranstaltungen);
 
     return {
         newVeranstaltung,

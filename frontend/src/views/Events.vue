@@ -24,7 +24,7 @@
             </ion-row>
           </ion-grid>
         </ion-item>
-        <ion-item :key="veran" v-for="veran in veranstaltungen">
+        <ion-item :key="veran" v-for="veran in veranstaltungen" button :router-link="'events/' + veran.id">
           <ion-grid>
             <ion-row>
               <ion-col>
@@ -96,6 +96,6 @@ export default {
       useVeranstaltungen();
 
     return { newVeranstaltung, veranstaltungen, getVeranstaltungen };
-  },
+  }
 };
 </script>
