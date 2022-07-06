@@ -20,7 +20,7 @@ public class VeranstaltungController {
     @Autowired
     private UserRepository userRepository;
 
-    public List<Veranstaltung> listAllVeranstaltungen() {
+    public List<Veranstaltung> listAllVeranstaltungen(){
         return veranstaltungRepository.findAll();
     }
 
@@ -29,12 +29,27 @@ public class VeranstaltungController {
        
     }
 
-    public void createNewEvent(Veranstaltung veranstaltung, String benutzername) {
+    public void createNewEvent(Veranstaltung veranstaltung, String benutzername){
         User user = userRepository.findById(benutzername).get();
         Veranstaltung veranstaltung2 = veranstaltung;
 
         veranstaltung2.getUsers().add(user);
         veranstaltungRepository.save(veranstaltung2);
+    }
+
+    public String updateEventParticipant(Veranstaltung veranstaltung, String benutzername){
+        User user = userRepository.findById(benutzername).get();
+        Veranstaltung v = veranstaltungRepository.findById(veranstaltung.getId()).get();
+
+        if (v.getUsers().contains(user)) {
+            String messageNegative = "Du nimmst bereits teil";
+            return messageNegative;
+        } else {
+            v.getUsers().add(user);
+            veranstaltungRepository.save(v);
+            String messagePositive = "Besten Dank für die Teilnahme";
+            return messagePositive;
+        }
     }
     
  
