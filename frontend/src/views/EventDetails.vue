@@ -16,19 +16,21 @@
       </ion-header>
 
       <ion-item color="secondary">
-        <ion-label> Sportart </ion-label>
+        <ion-label> Sportart: {{ veranstaltung.activity }}</ion-label>
       </ion-item>
       <ion-item color="secondary">
-        <ion-label> Beschreibung </ion-label>
+        <ion-label> Beschreibung: {{ veranstaltung.beschreibung }}</ion-label>
       </ion-item>
       <ion-item color="secondary">
-        <ion-label> Ort </ion-label>
+        <ion-label> Ort: {{ veranstaltung.ort }}</ion-label>
       </ion-item>
       <ion-item color="secondary">
-        <ion-label> Datum und Zeit </ion-label>
+        <ion-label> Datum und Zeit: {{ veranstaltung.datum }}</ion-label>
       </ion-item>
       <ion-item color="secondary">
-        <ion-label> Teilnehmende </ion-label>
+        <ul>
+          <li :key="user" v-for="user in veranstaltung.users">{{ user.vorname }}</li>
+        </ul>
       </ion-item>
 
       <header>Am Event teilnehmen</header>
@@ -37,7 +39,7 @@
   </ion-page>
 </template>
 
-<script lang="ts">
+<script>
 import {
   IonPage,
   IonHeader,
@@ -48,6 +50,8 @@ import {
   IonButton,
   IonBackButton,
 } from "@ionic/vue";
+import { useVeranstaltungById } from "@/composables/useVeranstaltungById";
+import { useRoute } from "vue-router";
 
 export default {
   name: "Profile",
@@ -61,5 +65,23 @@ export default {
     IonButton,
     IonBackButton,
   },
+  setup() {
+    const {
+      veranstaltung,
+      getVeranstaltungId
+    } = useVeranstaltungById();
+
+    const route = useRoute();
+    const { id } = route.params;
+
+    return {
+      veranstaltung,
+      getVeranstaltungId,
+      id
+    }
+  },
+  mounted() {
+    this.getVeranstaltungId(this.id);
+  }
 };
 </script>

@@ -38,3 +38,41 @@ export async function addNewVeranstaltung(newVeranstaltung: Veranstaltung) {
     }
 
 }
+
+export async function getVeranstaltungById(veranstaltungsId: any): Promise<Veranstaltung[]> {
+    const config = {
+        withCredentials: true
+    }
+    try {
+        const response = await axios.get(API_ROOT + '/api/veranstaltungen/' + veranstaltungsId, config);
+        return response.data;
+    } catch (error) {
+        return <any>error;
+    }
+}
+
+export async function updateVeranstaltungParticipant(newParticipant: Veranstaltung) {
+    const config = {
+        withCredentials: true
+    }
+    try {
+        const response = await axios.put(API_ROOT + '/api/veranstaltung/addparticipant', newParticipant, config);
+        return response.data;
+    } catch (error) {
+        return error;
+    }
+
+}
+
+export async function deleteParticipant(delParticipant: Veranstaltung) {
+    const config = {
+        withCredentials: true
+    }
+    try {
+        const response = await axios.delete(API_ROOT + '/api/veranstaltung/delete/'+ delParticipant, config);
+        return response.data;
+    } catch (error) {
+        return error;
+    }
+
+}
