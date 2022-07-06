@@ -95,9 +95,9 @@ public class Buddyi implements CommandLineRunner {
         v2.setDatum(date2);
 
         Veranstaltung v3 = new Veranstaltung();
-        v3.setBeschreibung("Schneller als der Wind");
-        v3.setActivity("Jogging");
-        v3.setOrt("Zürich");
+        v3.setBeschreibung("Smash iit");
+        v3.setActivity("Volleyball");
+        v3.setOrt("Schaffhausen");
         Date date3 = format.parse("16/08/2022");
         v3.setDatum(date3);
 

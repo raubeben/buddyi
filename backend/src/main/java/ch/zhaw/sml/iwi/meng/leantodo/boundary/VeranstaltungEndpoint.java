@@ -20,6 +20,7 @@ public class VeranstaltungEndpoint {
     private VeranstaltungController veranstaltungController;
 
     @RequestMapping(path = "/api/veranstaltungen/all", method = RequestMethod.GET)
+    @PreAuthorize ("isAuthenticated() AND hasRole('USER')")
     public List<Veranstaltung> getAllVeranstaltungen() {
         return veranstaltungController.listAllVeranstaltungen();
     }
@@ -35,6 +36,13 @@ public class VeranstaltungEndpoint {
     public void postVeranstaltung(@RequestBody Veranstaltung veranstaltung, Principal principal) {
         veranstaltung.setId(null);
         veranstaltungController.createNewEvent(veranstaltung,principal.getName());
+    }
+
+    @RequestMapping(path = "/api/veranstaltung/addparticipant", method = RequestMethod.PUT)
+    @PreAuthorize ("isAuthenticated() AND hasRole('USER')")
+    public String updateVeranstaltungParticipant(@RequestBody Veranstaltung veranstaltung, Principal principal){
+        String message = veranstaltungController.updateEventParticipant(veranstaltung, principal.getName());
+        return message;
     }
         
 }
