@@ -70,7 +70,7 @@ export async function deleteParticipant(veranstaltungsId: any) {
         withCredentials: true,
     }
     try {
-        const response = await axios.delete(API_ROOT + '/api/veranstaltung/'+ veranstaltungsId +'/delete', config);
+        const response = await axios.delete(API_ROOT + '/api/veranstaltungen/'+ veranstaltungsId +'/delete', config);
         return response.data;
     } catch (error) {
         return error;
