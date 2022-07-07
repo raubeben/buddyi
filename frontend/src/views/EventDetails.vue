@@ -2,8 +2,8 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-title>Event-Details Test</ion-title>
-        <ion-button>
+        <ion-title>Event Details: <i>{{ veranstaltung.activity }} in {{ veranstaltung.ort }}</i></ion-title>
+        <ion-button slot="start">
           <ion-back-button default-href="/tabs/events"></ion-back-button>
         </ion-button>
       </ion-toolbar>
@@ -15,20 +15,20 @@
         </ion-toolbar>
       </ion-header>
 
-      <ion-item color="secondary">
+      <ion-item color="primary">
         <ion-label> Sportart: {{ veranstaltung.activity }}</ion-label>
       </ion-item>
       <ion-item color="secondary">
         <ion-label> Beschreibung: {{ veranstaltung.beschreibung }}</ion-label>
       </ion-item>
-      <ion-item color="secondary">
+      <ion-item>
         <ion-label> Ort: {{ veranstaltung.ort }}</ion-label>
       </ion-item>
-      <ion-item color="secondary">
+      <ion-item>
         <ion-label> Datum und Zeit: {{ veranstaltung.datum }}</ion-label>
       </ion-item>
-      <ion-item color="secondary">
-        <ion-label>Teilnehmer:</ion-label>
+      <ion-item>
+        <ion-label> Teilnehmer: </ion-label>
         <ul>
           <li :key="user" v-for="user in veranstaltung.users">
             {{ user.vorname }}
@@ -36,10 +36,9 @@
         </ul>
       </ion-item>
 
-      <header>Am Event teilnehmen</header>
-      <ion-button @click="updateParticipant(veranstaltung); submitAlert(); reloadPage()"
-        >Anmelden</ion-button
-      >
+      <ion-button color="success" @click="updateParticipant(veranstaltung); submitAlert(); reloadPage()">
+        <strong>Am Event teilnehmen</strong>
+      </ion-button>
     </ion-content>
   </ion-page>
 </template>
@@ -77,12 +76,11 @@ export default {
   methods: {
     async submitAlert() {
       const alert = await alertController.create({
-        header: "Alert",
-        subHeader: "Important message",
+        header: "Event-Anmeldung",
+        subHeader: "",
         message: "Erfolgreich angemeldet!",
         buttons: ["OK"],
       });
-
       await alert.present();
     },
     reloadPage() {
@@ -90,7 +88,10 @@ export default {
     }
   },
   setup() {
-    const { veranstaltung, getVeranstaltungId } = useVeranstaltungById();
+    const {
+      veranstaltung,
+      getVeranstaltungId
+    } = useVeranstaltungById();
 
     const {
       veranstaltungen,
@@ -100,7 +101,6 @@ export default {
     } = useVeranstaltungen();
 
     const route = useRoute();
-
     const { id } = route.params;
 
     return {
@@ -116,6 +116,5 @@ export default {
   mounted() {
     this.getVeranstaltungId(this.id);
   },
-  
 };
 </script>
