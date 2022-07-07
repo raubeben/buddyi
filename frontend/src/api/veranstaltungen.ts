@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { API_ROOT } from "@/config/development";
 import { Veranstaltung } from '@/model/veranstaltung';
+import { UsrInfoResponse } from '@/model/usrInfoResponse';
 
 export async function getAllVeranstaltungen(): Promise<Veranstaltung[]> {
     const config = {
@@ -51,12 +52,12 @@ export async function getVeranstaltungById(veranstaltungsId: any): Promise<Veran
     }
 }
 
-export async function updateVeranstaltungParticipant(newParticipant: Veranstaltung) {
+export async function updateVeranstaltungParticipant(updateVeranstaltung: Veranstaltung) {
     const config = {
         withCredentials: true
     }
     try {
-        const response = await axios.put(API_ROOT + '/api/veranstaltung/addparticipant', newParticipant, config);
+        const response = await axios.put(API_ROOT + '/api/veranstaltung/addparticipant', updateVeranstaltung, config);
         return response.data;
     } catch (error) {
         return error;

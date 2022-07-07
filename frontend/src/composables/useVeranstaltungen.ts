@@ -1,4 +1,4 @@
-import { getAllVeranstaltungen, addNewVeranstaltung } from "@/api/veranstaltungen";
+import { getAllVeranstaltungen, addNewVeranstaltung, updateVeranstaltungParticipant, getVeranstaltungById } from "@/api/veranstaltungen";
 import { Veranstaltung } from "@/model/veranstaltung";
 import { onUpdated, ref } from 'vue';
 
@@ -25,13 +25,23 @@ export function useVeranstaltungen() {
         }
     }
 
+    const updateParticipant = async (updateVeranstaltung: Veranstaltung) => {
+        try {
+            await updateVeranstaltungParticipant(updateVeranstaltung as Veranstaltung);
+            getVeranstaltungen();
+        } catch (error) {
+            console.log(error); // FIXME: Errorhandling
+        }
+    }
+
     onUpdated(getVeranstaltungen);
 
     return {
         newVeranstaltung,
         veranstaltungen,
         getVeranstaltungen,
-        addVeranstaltung
+        addVeranstaltung,
+        updateParticipant
     }
 }
     
