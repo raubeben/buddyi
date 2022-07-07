@@ -1,5 +1,7 @@
 package ch.zhaw.sml.iwi.meng.leantodo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +17,10 @@ public class UserController {
 
     public User getInformations(String benutzername){
         return userRepository.findById(benutzername).get();
+    }
+
+    public List<User> getAlmostAllUser(String benutzername){
+        return userRepository.getAllUserExpectYourself(benutzername);
     }
 
 }

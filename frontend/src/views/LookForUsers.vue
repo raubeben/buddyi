@@ -7,12 +7,28 @@
     </ion-header>
 
     <ion-content :fullscreen="true">
-      <ion-searchbar></ion-searchbar>
+      <p>{{ fessa }}</p>
+      <ion-searchbar
+        type="text"
+        v-model="this.searchable"
+        @ionInput="
+          searchInput = $event.target.value;
+          onInput$.next($event.target.value);
+        "
+        @ionClear="searchCleared($event)"
+      >
+      </ion-searchbar>
+      <p>{{ selectedUser }}</p>
+      <ion-list>
+        <ion-item v-bind:key="user" v-for="user in filterByName">{{
+          user.benutzername
+        }}</ion-item>
+      </ion-list>
     </ion-content>
   </ion-page>
 </template>
 
-<script lang="ts">
+<script>
 
 import {
   IonPage,
@@ -20,8 +36,11 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
-  IonSearchbar
+  IonSearchbar,
+  IonItem,
+  IonList,
 } from "@ionic/vue";
+//import { useLookForUsers } from "@/composables/useLookForUsers";
 
 export default {
   name: "LookForUsers",
@@ -31,11 +50,13 @@ export default {
     IonTitle,
     IonContent,
     IonPage,
-    IonSearchbar
+    IonSearchbar,
+    IonItem,
+    IonList,
   },
-  dummyData: "Dummy",
   data() {
     return {
+      searchable: "",
       users: [
         { benutzername: "user", name: "Mario" },
         { benutzername: "derMensch", name: "Paulo" },
@@ -43,10 +64,23 @@ export default {
       ],
     };
   },
-  setup() {
-    //const { } = useTodos();
 
-    return {};
+  methods: {
+    
+  },
+
+  computed: {
+    filterByName(){
+      return this.users.filter(user => user.benutzername.includes(this.searchable))
+    }
+  },
+
+  setup() {
+    //const {selectedUser} = useLookForUsers;
+
+    return {
+      //selectedUser
+    };
   },
 };
 </script>

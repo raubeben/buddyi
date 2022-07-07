@@ -1,6 +1,7 @@
 package ch.zhaw.sml.iwi.meng.leantodo.boundary;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -28,6 +29,12 @@ public class UserEndpoint {
     @PreAuthorize("isAuthenticated() AND hasRole('USER')")
     public User lookForOtherUser (@PathVariable (name = "user") String benutzername){
         return userController.getInformations(benutzername);
+    }
+
+    @RequestMapping(path = "/api/users/all", method = RequestMethod.GET)
+    @PreAuthorize("isAuthenticated() AND hasRole('USER')")
+    public List<User> getAllUser (Principal principal){
+        return userController.getAlmostAllUser(principal.getName());
     }
 
 }
