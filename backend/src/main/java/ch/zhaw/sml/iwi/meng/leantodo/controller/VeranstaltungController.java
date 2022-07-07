@@ -41,9 +41,9 @@ public class VeranstaltungController {
         veranstaltungRepository.save(veranstaltung2);
     }
 
-    public String removeParticipant(Veranstaltung veranstaltung, String benutzername){
+    public String removeParticipant(Long veranstaltungId, String benutzername){
         User user = userRepository.findById(benutzername).get();
-        Veranstaltung v = veranstaltungRepository.findById(veranstaltung.getId()).get();
+        Veranstaltung v = veranstaltungRepository.findById(veranstaltungId).get();
 
         if (v.getUsers().contains(user)) {
             v.getUsers().remove(user);

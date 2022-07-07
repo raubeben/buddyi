@@ -45,10 +45,10 @@ public class VeranstaltungEndpoint {
         veranstaltungController.createNewEvent(veranstaltung,principal.getName());
     }
 
-    @RequestMapping(path = "/api/veranstaltungen/delete", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/api/veranstaltungen/{id}/delete", method = RequestMethod.DELETE)
     @PreAuthorize ("isAuthenticated() AND hasRole('USER')")
-    public String deleteParticipant(@RequestBody Veranstaltung veranstaltung, Principal principal){
-        return veranstaltungController.removeParticipant(veranstaltung, principal.getName());
+    public String deleteParticipant(@PathVariable (name = "id") Long veranstaltungId, Principal principal){
+        return veranstaltungController.removeParticipant(veranstaltungId, principal.getName());
     }
 
     @RequestMapping(path = "/api/veranstaltung/addparticipant", method = RequestMethod.PUT)
