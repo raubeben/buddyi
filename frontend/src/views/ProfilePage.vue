@@ -48,7 +48,7 @@
           <ion-label>{{ uevent.beschreibung }}</ion-label>
           <ion-label>{{ uevent.ort }}</ion-label>
           <ion-label>{{ uevent.datum }}</ion-label>
-          <ion-button @click="delParticipant(uevent)" size="small" color="danger">
+          <ion-button @click="delParticipant(uevent.id)" size="small" color="danger">
             <ion-icon name="close-outline"></ion-icon>
           </ion-button>
         </ion-item>
