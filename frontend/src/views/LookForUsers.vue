@@ -7,10 +7,10 @@
     </ion-header>
 
     <ion-content :fullscreen="true">
-      <p>{{ fessa }}</p>
       <ion-searchbar
         type="text"
         v-model="this.searchable"
+        show-cancel-button="focus"
         @ionInput="
           searchInput = $event.target.value;
           onInput$.next($event.target.value);
@@ -18,18 +18,14 @@
         @ionClear="searchCleared($event)"
       >
       </ion-searchbar>
-      <p>{{ selectedUser }}</p>
       <ion-list>
-        <ion-item v-bind:key="user" v-for="user in filterByName">{{
-          user.benutzername
-        }}</ion-item>
+        <ion-item v-bind:key="user" v-for="user in filterByName">{{ user.vorname }} {{ user.name }}</ion-item>
       </ion-list>
     </ion-content>
   </ion-page>
 </template>
 
 <script>
-
 import {
   IonPage,
   IonHeader,
@@ -40,7 +36,7 @@ import {
   IonItem,
   IonList,
 } from "@ionic/vue";
-//import { useLookForUsers } from "@/composables/useLookForUsers";
+import { useUserinformationen } from '@/composables/useUserinformationen';
 
 export default {
   name: "LookForUsers",
@@ -57,29 +53,21 @@ export default {
   data() {
     return {
       searchable: "",
-      users: [
-        { benutzername: "user", name: "Mario" },
-        { benutzername: "derMensch", name: "Paulo" },
-        { benutzername: "derAlien", name: "Erika" },
-      ],
     };
-  },
-
-  methods: {
-    
   },
 
   computed: {
     filterByName(){
-      return this.users.filter(user => user.benutzername.includes(this.searchable))
+      return this.almostalluser.filter(user => user.vorname.concat(" ").concat(user.name).includes(this.searchable))
     }
   },
 
   setup() {
-    //const {selectedUser} = useLookForUsers;
+    const { getUserAlmostAll, almostalluser } = useUserinformationen();
 
     return {
-      //selectedUser
+      getUserAlmostAll,
+      almostalluser
     };
   },
 };

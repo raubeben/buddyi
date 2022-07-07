@@ -31,7 +31,7 @@ public class UserEndpoint {
         return userController.getInformations(benutzername);
     }
 
-    @RequestMapping(path = "/api/users/all", method = RequestMethod.GET)
+    @RequestMapping(path = "/api/users/almostall", method = RequestMethod.GET)
     @PreAuthorize("isAuthenticated() AND hasRole('USER')")
     public List<User> getAllUser (Principal principal){
         return userController.getAlmostAllUser(principal.getName());
