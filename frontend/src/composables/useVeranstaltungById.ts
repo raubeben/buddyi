@@ -1,6 +1,6 @@
 import { getAllVeranstaltungenUser } from "@/api/veranstaltungen";
 import { Veranstaltung } from "@/model/veranstaltung";
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import { getVeranstaltungById } from "@/api/veranstaltungen";
 
 export function useVeranstaltungById() {
