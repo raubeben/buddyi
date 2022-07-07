@@ -41,7 +41,8 @@ export function useVeranstaltungen() {
         veranstaltungen,
         getVeranstaltungen,
         addVeranstaltung,
-        updateParticipant
+        updateParticipant,
+        
     }
 }
     

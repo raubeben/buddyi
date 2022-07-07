@@ -37,7 +37,9 @@
       </ion-item>
 
       <header>Am Event teilnehmen</header>
-      <ion-button @click="updateParticipant(veranstaltung)">Anmelden</ion-button>
+      <ion-button @click="updateParticipant(veranstaltung); submitAlert(); reloadPage()"
+        >Anmelden</ion-button
+      >
     </ion-content>
   </ion-page>
 </template>
@@ -52,7 +54,9 @@ import {
   IonItem,
   IonButton,
   IonBackButton,
+  alertController,
 } from "@ionic/vue";
+
 import { useVeranstaltungById } from "@/composables/useVeranstaltungById";
 import { useVeranstaltungen } from "@/composables/useVeranstaltungen";
 import { useRoute } from "vue-router";
@@ -68,6 +72,22 @@ export default {
     IonItem,
     IonButton,
     IonBackButton,
+  },
+
+  methods: {
+    async submitAlert() {
+      const alert = await alertController.create({
+        header: "Alert",
+        subHeader: "Important message",
+        message: "Erfolgreich angemeldet!",
+        buttons: ["OK"],
+      });
+
+      await alert.present();
+    },
+    reloadPage() {
+      window.location.reload();
+    }
   },
   setup() {
     const { veranstaltung, getVeranstaltungId } = useVeranstaltungById();
@@ -96,5 +116,6 @@ export default {
   mounted() {
     this.getVeranstaltungId(this.id);
   },
+  
 };
 </script>
