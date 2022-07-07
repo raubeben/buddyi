@@ -28,13 +28,16 @@
         <ion-label> Datum und Zeit: {{ veranstaltung.datum }}</ion-label>
       </ion-item>
       <ion-item color="secondary">
+        <ion-label>Teilnehmer:</ion-label>
         <ul>
-          <li :key="user" v-for="user in veranstaltung.users">{{ user.vorname }}</li>
+          <li :key="user" v-for="user in veranstaltung.users">
+            {{ user.vorname }}
+          </li>
         </ul>
       </ion-item>
 
       <header>Am Event teilnehmen</header>
-      <ion-button>Anmelden</ion-button>
+      <ion-button @click="updateParticipant(veranstaltung)">Anmelden</ion-button>
     </ion-content>
   </ion-page>
 </template>
@@ -51,6 +54,7 @@ import {
   IonBackButton,
 } from "@ionic/vue";
 import { useVeranstaltungById } from "@/composables/useVeranstaltungById";
+import { useVeranstaltungen } from "@/composables/useVeranstaltungen";
 import { useRoute } from "vue-router";
 
 export default {
@@ -66,22 +70,31 @@ export default {
     IonBackButton,
   },
   setup() {
+    const { veranstaltung, getVeranstaltungId } = useVeranstaltungById();
+
     const {
-      veranstaltung,
-      getVeranstaltungId
-    } = useVeranstaltungById();
+      veranstaltungen,
+      getVeranstaltungen,
+      addVeranstaltung,
+      updateParticipant,
+    } = useVeranstaltungen();
 
     const route = useRoute();
+
     const { id } = route.params;
 
     return {
       veranstaltung,
       getVeranstaltungId,
-      id
-    }
+      id,
+      updateParticipant,
+      veranstaltungen,
+      getVeranstaltungen,
+      addVeranstaltung,
+    };
   },
   mounted() {
     this.getVeranstaltungId(this.id);
-  }
+  },
 };
 </script>
