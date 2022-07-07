@@ -65,12 +65,15 @@ export async function updateVeranstaltungParticipant(updateVeranstaltung: Verans
 
 }
 
-export async function deleteParticipant(delParticipant: Veranstaltung) {
+export async function deleteParticipant(veranstaltung: Veranstaltung) {
     const config = {
-        withCredentials: true
+        withCredentials: true,
+        data: {
+            veranstaltung
+        }
     }
     try {
-        const response = await axios.delete(API_ROOT + '/api/veranstaltung/delete/'+ delParticipant, config);
+        const response = await axios.delete(API_ROOT + '/api/veranstaltung/delete', config);
         return response.data;
     } catch (error) {
         return error;

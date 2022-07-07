@@ -38,16 +38,19 @@
               <ion-col><b>Beschreibung</b></ion-col>
               <ion-col><b>Wo</b></ion-col>
               <ion-col><b>Wann</b></ion-col>
+              <ion-col><b>Event entfernen</b></ion-col>
             </ion-row>
           </ion-grid>
         </ion-item>
         <!-- Alle eingetragenen Events als Liste via @/composables/useVeranstaltungenUser -->
-        <!-- TODO: Router link noch einfügen: :router-link="'/tabs/tasks/' + task._id" bsp. von task-list-->
-        <ion-item button v-bind:key="uevent" v-for="uevent in veranstaltungen">
+        <ion-item v-bind:key="uevent" v-for="uevent in veranstaltungen">
           <ion-label>{{ uevent.activity }}</ion-label>
           <ion-label>{{ uevent.beschreibung }}</ion-label>
           <ion-label>{{ uevent.ort }}</ion-label>
           <ion-label>{{ uevent.datum }}</ion-label>
+          <ion-button @click="delParticipant(uevent)" size="small" color="danger">
+            <ion-icon name="close-outline"></ion-icon>
+          </ion-button>
         </ion-item>
       </ion-list>
     </ion-content>
@@ -66,10 +69,12 @@ import {
   IonBadge,
   IonItem,
   IonAvatar,
-  IonListHeader
+  IonListHeader,
+  IonIcon
 } from '@ionic/vue';
 import { useVeranstaltungenUser } from '@/composables/useVeranstaltungenUser';
 import { useUserinformationen } from '@/composables/useUserinformationen';
+import { delUser } from '@/composables/delUser';
 
 export default {
   name: 'Profile',
@@ -84,7 +89,8 @@ export default {
     IonBadge,
     IonItem,
     IonAvatar,
-    IonListHeader
+    IonListHeader,
+    IonIcon
   },
   setup() {
     const {
@@ -97,11 +103,16 @@ export default {
       getUserinform
     } = useUserinformationen();
 
+    const {
+      delParticipant
+    } = delUser();
+
     return {
       veranstaltungen,
       getVeranstaltungen,
       usrinform,
-      getUserinform
+      getUserinform,
+      delParticipant
     }
   },
 };
