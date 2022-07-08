@@ -61,7 +61,7 @@
                 {{ uevent.ort }}
               </ion-col>
               <ion-col>
-                {{ uevent.datum }}
+                {{ new Date(uevent.datum).toString().split('G')[0] }}
               </ion-col>
               <ion-col>
                 <ion-button

@@ -25,7 +25,7 @@
         <ion-label> Ort: {{ veranstaltung.ort }}</ion-label>
       </ion-item>
       <ion-item>
-        <ion-label> Datum und Zeit: {{ veranstaltung.datum }}</ion-label>
+        <ion-label> Datum und Zeit: {{ new Date(veranstaltung.datum).toString().split('G')[0] }}</ion-label>
       </ion-item>
       <ion-item>
         <ion-label> Teilnehmer: </ion-label>
