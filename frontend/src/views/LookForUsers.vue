@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title>Look for Users</ion-title>
+        <ion-title>Finde deinen Buddyi</ion-title>
       </ion-toolbar>
     </ion-header>
 
@@ -16,6 +16,9 @@
           {{ user.vorname }} {{ user.name }}
         </ion-item>
       </ion-list>
+      <div padding>
+        <ion-img src="assets/img/weltklassezurich.jpg"></ion-img>
+      </div>
     </ion-content>
   </ion-page>
 </template>
@@ -30,6 +33,7 @@ import {
   IonSearchbar,
   IonItem,
   IonList,
+
 } from "@ionic/vue";
 import { useUserinformationen } from '@/composables/useUserinformationen';
 

@@ -1,8 +1,17 @@
 <template>
   <ion-page>
     <ion-header :translucent="true">
-      <ion-toolbar color="secondary">
+      <ion-toolbar>
         <ion-title>Profil</ion-title>
+        <ion-item class="basicProfile" slot="end">
+          <ion-avatar>
+            <ion-img src="assets/img/ppic.png"></ion-img>
+          </ion-avatar>
+          <!-- User Information via @/composables/useUserinformationen -->
+          <ion-label slot="end"
+            >{{ usrinform.vorname }} {{ usrinform.name }}</ion-label
+          >
+        </ion-item>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
@@ -12,24 +21,15 @@
         </ion-toolbar>
       </ion-header>
       <!-- Profilbild -->
-      <ion-item>
-        <ion-avatar slot="start">
-          <ion-img src="assets/img/ppic.png"></ion-img>
-        </ion-avatar>
-        <!-- User Information via @/composables/useUserinformationen -->
-        <ion-label>{{ usrinform.vorname }} {{ usrinform.name }}</ion-label>
-      </ion-item>
+
       <!-- Badge -->
       <!-- TODO: Anzahl Events als Counter -->
-      <ion-item>
-        <ion-badge color="success"> Anzahl eingetragener Events: </ion-badge>
-      </ion-item>
+
       <!-- Event-Titel -->
-      <ion-item>
-        <ion-list-header color="primary"
-          ><b>Bevorstehende Events</b></ion-list-header
-        >
-      </ion-item>
+
+      <ion-list-header class="basicHeader">Bevorstehende Events: {{ veranstaltungen.length }}
+        </ion-list-header>
+
       <!-- Liste der Events -->
       <ion-list>
         <ion-item>
@@ -58,25 +58,25 @@
                 {{ uevent.ort }}
               </ion-col>
               <ion-col>
-                {{ uevent.datum }}
+                {{ new Date(uevent.datum).toString().split('G')[0] }}
               </ion-col>
               <ion-col>
-                <ion-button
+                <ion-button class="basicButton"
                   @click="
                     delParticipant(uevent.id);
                     reloadPage();
                   "
-                  size="big"
-                  color="danger"
                 >
                   Löschen
                 </ion-button>
-                
               </ion-col>
             </ion-row>
           </ion-grid>
         </ion-item>
       </ion-list>
+      <div padding>
+        <ion-img style="width: auto; height: 500px;" src="assets/img/profile.png"></ion-img>
+      </div>
     </ion-content>
   </ion-page>
 </template>
@@ -90,14 +90,12 @@ import {
   IonContent,
   IonImg,
   IonLabel,
-  IonBadge,
   IonItem,
   IonAvatar,
   IonListHeader,
   IonGrid,
   IonRow,
   IonCol,
-  
 } from "@ionic/vue";
 import { useVeranstaltungenUser } from "@/composables/useVeranstaltungenUser";
 import { useUserinformationen } from "@/composables/useUserinformationen";
@@ -113,14 +111,12 @@ export default {
     IonPage,
     IonImg,
     IonLabel,
-    IonBadge,
     IonItem,
     IonAvatar,
     IonListHeader,
     IonGrid,
     IonRow,
     IonCol,
-    
   },
   methods: {
     reloadPage() {

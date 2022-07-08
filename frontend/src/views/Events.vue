@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-header>
-      <ion-toolbar color="secondary">
+      <ion-toolbar>
         <ion-title>Events</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -49,12 +49,11 @@
           </ion-grid>
         </ion-item>
         <ion-item>
-          <ion-button expand="block" router-link="/tabs/events/create"
-            >Add New Event</ion-button
+          <ion-button class="basicButton" router-link="/tabs/events/create"
+            >Hinzufügen</ion-button
           >
         </ion-item>
       </ion-list>
-
       <div padding>
         <ion-img src="assets/img/hintergrund_events.jpg"></ion-img>
       </div>

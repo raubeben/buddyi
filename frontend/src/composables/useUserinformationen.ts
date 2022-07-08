@@ -15,9 +15,9 @@ export function useUserinformationen() {
         }
     }
 
-    const getOtherUserinform = async (benutzern: any) => {
+    const getOtherUserinform = async (user: any) => {
         try {
-            otherusrinform.value = await getOtherUsrInformation(benutzern);
+            otherusrinform.value = await getOtherUsrInformation(user);
         } catch (error) {
             console.log(error);
         }
