@@ -4,25 +4,21 @@
     height: 30px;
     width: 120px;
     --background: rgb(27, 73, 101);
-
 }
 
 .basicProfile {
     font-weight: bold;
     color: white;
     --background: rgb(48, 60, 75);
-
 }
 
 .basicHeader {
     font-weight: bold;
     font-size: medium;
     --background: rgb(181, 208, 228);
-
 }
+
 ion-toolbar {
     --background: rgb(48, 60, 75);
     color: white;
-    
-
 }

@@ -11,7 +11,6 @@
           <ion-title size="large">Events</ion-title>
         </ion-toolbar>
       </ion-header>
-
       <ion-list>
         <ion-item>
           <ion-grid>
@@ -23,12 +22,7 @@
             </ion-row>
           </ion-grid>
         </ion-item>
-        <ion-item
-          :key="veran"
-          v-for="veran in veranstaltungen"
-          button
-          :router-link="'events/' + veran.id"
-        >
+        <ion-item :key="veran" v-for="veran in veranstaltungen" button :router-link="'events/' + veran.id">
           <ion-grid>
             <ion-row>
               <ion-col>
@@ -49,9 +43,7 @@
           </ion-grid>
         </ion-item>
         <ion-item>
-          <ion-button class="basicButton" router-link="/tabs/events/create"
-            >Hinzufügen</ion-button
-          >
+          <ion-button class="basicButton" router-link="/tabs/events/create">Hinzufügen</ion-button>
         </ion-item>
       </ion-list>
       <div padding>
@@ -95,10 +87,17 @@ export default {
     IonImg,
   },
   setup() {
-    const { newVeranstaltung, veranstaltungen, getVeranstaltungen } =
-      useVeranstaltungen();
+    const {
+      newVeranstaltung,
+      veranstaltungen,
+      getVeranstaltungen
+    } = useVeranstaltungen();
 
-    return { newVeranstaltung, veranstaltungen, getVeranstaltungen };
+    return {
+      newVeranstaltung,
+      veranstaltungen,
+      getVeranstaltungen
+    };
   },
 };
 </script>

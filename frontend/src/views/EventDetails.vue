@@ -2,8 +2,8 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-title>Event Details - {{ veranstaltung.activity }} in {{ veranstaltung.ort }}</ion-title> 
-          <ion-back-button slot="start" default-href="/tabs/events"></ion-back-button>
+        <ion-title>Event Details - {{ veranstaltung.activity }} in {{ veranstaltung.ort }}</ion-title>
+        <ion-back-button slot="start" default-href="/tabs/events"></ion-back-button>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
@@ -12,7 +12,7 @@
           <ion-title size="large">Event-Details</ion-title>
         </ion-toolbar>
       </ion-header>
-        <ion-list-header class="basicHeader"> Sportart: {{ veranstaltung.activity }}</ion-list-header>
+      <ion-list-header class="basicHeader"> Sportart: {{ veranstaltung.activity }}</ion-list-header>
       <ion-item>
         <ion-label><b>Beschreibung:</b> {{ veranstaltung.beschreibung }}</ion-label>
       </ion-item>
@@ -20,19 +20,20 @@
         <ion-label><b>Ort:</b> {{ veranstaltung.ort }}</ion-label>
       </ion-item>
       <ion-item>
-        <ion-label><b>Datum und Zeit:</b>  {{ new Date(veranstaltung.datum).toString().split('G')[0] }}</ion-label>
+        <ion-label><b>Datum und Zeit:</b> {{ new Date(veranstaltung.datum).toString().split('G')[0] }}</ion-label>
       </ion-item>
       <ion-item>
-        <ion-label><b>Teilnehmer: </b> 
+        <ion-label><b>Teilnehmer: </b>
           <ul>
             <li :key="user" v-for="user in veranstaltung.users">
-            {{ user.vorname }} {{ user.name }}
+              {{ user.vorname }} {{ user.name }}
             </li>
           </ul>
         </ion-label>
       </ion-item>
 
-      <ion-button class="basicButton" v-if="!isHidden" @click="updateParticipant(veranstaltung); submitAlert(); hideButton()">
+      <ion-button class="basicButton" v-if="!isHidden"
+        @click="updateParticipant(veranstaltung); submitAlert(); hideButton()">
         <strong>Teilnehmen</strong>
       </ion-button>
     </ion-content>
@@ -84,19 +85,19 @@ export default {
         message: "Erfolgreich angemeldet! Sie werden in Kürze weitergeleitet.",
       });
       await alert.present();
-      setTimeout(() => {this.reloadPage();},3000);
+      setTimeout(() => { this.reloadPage(); }, 3000);
     },
 
     reloadPage() {
       window.location.reload();
     },
 
-    hideButton(){
+    hideButton() {
       this.getVeranstaltungId(this.id);
       this.getUserinform();
-      for(let i = 0; i < Object.keys(this.veranstaltung.users).length; i++){
+      for (let i = 0; i < Object.keys(this.veranstaltung.users).length; i++) {
         let condition = false;
-        
+
         if (this.usrinform.benutzername == this.veranstaltung.users[i].benutzername) {
           condition = true;
         }
@@ -122,10 +123,10 @@ export default {
 
     const route = useRoute();
     const { id } = route.params;
-          console.log("URL-Eventdet.: ")
-        console.log(route)
-        console.log("PARAMETER-Eventdet.: ")
-        console.log(id)
+    console.log("URL-Eventdet.: ")
+    console.log(route)
+    console.log("PARAMETER-Eventdet.: ")
+    console.log(id)
 
     const {
       usrinform,

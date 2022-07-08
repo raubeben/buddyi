@@ -1,8 +1,8 @@
 <template>
     <ion-page>
         <ion-header :translucent="true">
-            <ion-toolbar>         
-                    <ion-back-button slot="start" default-href="/tabs/events"></ion-back-button>            
+            <ion-toolbar>
+                <ion-back-button slot="start" default-href="/tabs/events"></ion-back-button>
                 <!-- Profilbild -->
                 <ion-item class="basicProfile">
                     <!-- User Information via @/composables/useUserinformationen -->
@@ -17,7 +17,8 @@
             <ion-header collapse="condense">
                 <ion-title slot="end"><i>User-Info</i></ion-title>
             </ion-header>
-                <ion-list-header class="basicHeader"> {{ otherusrinform.vorname }} {{ otherusrinform.name }}</ion-list-header>
+            <ion-list-header class="basicHeader"> {{ otherusrinform.vorname }} {{ otherusrinform.name }}
+            </ion-list-header>
             <ion-item>
                 <ion-label><b>Geschlecht: </b> {{ otherusrinform.geschlecht }}</ion-label>
             </ion-item>

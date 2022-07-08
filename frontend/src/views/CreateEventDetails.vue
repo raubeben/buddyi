@@ -23,11 +23,7 @@
                 <ion-label> Titel </ion-label>
               </ion-col>
               <ion-col>
-                <ion-input
-                  type="text"
-                  placeholder="Event Titel"
-                  v-model="newVeranstaltung.activity"
-                ></ion-input>
+                <ion-input type="text" placeholder="Event Titel" v-model="newVeranstaltung.activity"></ion-input>
               </ion-col>
             </ion-row>
             <ion-row>
@@ -35,11 +31,8 @@
                 <ion-label> Beschreibung </ion-label>
               </ion-col>
               <ion-col>
-                <ion-input
-                  type="text"
-                  placeholder="Event Beschreibung"
-                  v-model="newVeranstaltung.beschreibung"
-                ></ion-input>
+                <ion-input type="text" placeholder="Event Beschreibung" v-model="newVeranstaltung.beschreibung">
+                </ion-input>
               </ion-col>
             </ion-row>
             <ion-row>
@@ -47,11 +40,7 @@
                 <ion-label> Ort </ion-label>
               </ion-col>
               <ion-col>
-                <ion-input
-                  type="text"
-                  placeholder="Event Standort"
-                  v-model="newVeranstaltung.ort"
-                ></ion-input>
+                <ion-input type="text" placeholder="Event Standort" v-model="newVeranstaltung.ort"></ion-input>
               </ion-col>
             </ion-row>
             <ion-row>
@@ -59,11 +48,7 @@
                 <ion-label> Datum </ion-label>
               </ion-col>
               <ion-col>
-                <ion-input
-                  type="date"
-                  placeholder="Event-Datum"
-                  v-model="newVeranstaltung.datum"
-                ></ion-input>
+                <ion-input type="date" placeholder="Event-Datum" v-model="newVeranstaltung.datum"></ion-input>
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -71,13 +56,7 @@
       </ion-list>
 
       <div padding>
-        <ion-button class="basicButton"
-          @click="
-            addVeranstaltung();
-            presentAlert();
-          "
-          >Hinzufügen</ion-button
-        >
+        <ion-button class="basicButton" @click="addVeranstaltung(); presentAlert();">Hinzufügen</ion-button>
       </div>
     </ion-content>
   </ion-page>
@@ -100,6 +79,7 @@ import {
   IonBackButton,
   alertController,
 } from "@ionic/vue";
+
 import { useVeranstaltungen } from "@/composables/useVeranstaltungen";
 
 export default {
@@ -129,7 +109,7 @@ export default {
         buttons: ["OK"],
       });
       await alert.present();
-      setTimeout(() => {  this.reloadPage(); }, 2000);
+      setTimeout(() => { this.reloadPage(); }, 2000);
     },
     reloadPage() {
       window.location.reload();
