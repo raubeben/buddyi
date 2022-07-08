@@ -71,7 +71,13 @@
       </ion-list>
 
       <div padding>
-        <ion-button @click="addVeranstaltung(); presentAlert()">Create</ion-button>
+        <ion-button
+          @click="
+            addVeranstaltung();
+            presentAlert();
+          "
+          >Create</ion-button
+        >
       </div>
     </ion-content>
   </ion-page>
@@ -112,7 +118,6 @@ export default {
     IonLabel,
     IonInput,
     IonBackButton,
-    
   },
 
   methods: {
@@ -123,8 +128,11 @@ export default {
         message: "Dein Event wurde erstellt!",
         buttons: ["OK"],
       });
-
       await alert.present();
+      setTimeout(() => {  this.reloadPage(); }, 2000);
+    },
+    reloadPage() {
+      window.location.reload();
     },
   },
   setup() {
