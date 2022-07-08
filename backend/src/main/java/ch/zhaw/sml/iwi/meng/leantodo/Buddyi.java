@@ -120,8 +120,8 @@ public class Buddyi implements CommandLineRunner {
 
         Veranstaltung v3 = new Veranstaltung();
         v3.setBeschreibung("Liebst du auch brennende Arme? Dann bist du willkommen an unser Volleyballabend. Wir treffen uns in der Turnhalle beim Schulhaus Moor in Schaffhausen. Wir freuen uns auf dich!");
-        v3.setActivity("Volleyball, Schulhaus Moor");
-        v3.setOrt("Schaffhausen");
+        v3.setActivity("Volleyball");
+        v3.setOrt("Schaffhausen, Schulhaus Moor");
         Date date3 = format.parse("16-08-2022 20:15");
         v3.setDatum(date3);
 
