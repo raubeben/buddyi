@@ -7,19 +7,14 @@
     </ion-header>
 
     <ion-content :fullscreen="true">
-      <ion-searchbar
-        type="text"
-        v-model="this.searchable"
-        show-cancel-button="focus"
-        @ionInput="
-          searchInput = $event.target.value;
-          onInput$.next($event.target.value);
-        "
-        @ionClear="searchCleared($event)"
-      >
+      <ion-searchbar type="text" v-model="this.searchable" show-cancel-button="focus" @ionInput="
+        searchInput = $event.target.value;
+      onInput$.next($event.target.value);" @ionClear="searchCleared($event)">
       </ion-searchbar>
       <ion-list>
-        <ion-item v-bind:key="user" v-for="user in filterByName">{{ user.vorname }} {{ user.name }}</ion-item>
+        <ion-item :key="user" v-for="user in filterByName" button :router-link="'lookforusers/' + user.benutzername">
+          {{ user.vorname }} {{ user.name }}
+        </ion-item>
       </ion-list>
     </ion-content>
   </ion-page>
@@ -57,13 +52,13 @@ export default {
   },
 
   computed: {
-    filterByName(){
+    filterByName() {
       return this.almostalluser.filter(user => user.vorname.concat(" ").concat(user.name).includes(this.searchable))
     }
   },
 
   setup() {
-    const { getUserAlmostAll, almostalluser } = useUserinformationen();
+    const { getUserAlmostAll, almostalluser} = useUserinformationen();
 
     return {
       getUserAlmostAll,

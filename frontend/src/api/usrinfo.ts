@@ -14,6 +14,18 @@ export async function getUsrInformation(): Promise<UsrInfoResponse[]> {
     }
 }
 
+export async function getOtherUsrInformation(user: any): Promise<UsrInfoResponse[]> {
+    const config = {
+        withCredentials: true
+    }
+    try {
+        const response = await axios.get(API_ROOT + '/api/' + user, config);
+        return response.data;
+    } catch (error) {
+        return <any>error;
+    }
+}
+
 export async function getAlmostAllUser(): Promise<UsrInfoResponse[]> {
     const config = {
         withCredentials: true

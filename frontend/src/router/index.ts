@@ -39,6 +39,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'events/create',
         component: () => import('@/views/CreateEventDetails.vue')
+      },
+      {
+        path: 'lookforusers/:user',
+        component: () => import('@/views/OtherUsers.vue')
       }
     ]
   }

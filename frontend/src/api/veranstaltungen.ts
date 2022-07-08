@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { API_ROOT } from "@/config/development";
 import { Veranstaltung } from '@/model/veranstaltung';
-import { UsrInfoResponse } from '@/model/usrInfoResponse';
 
 export async function getAllVeranstaltungen(): Promise<Veranstaltung[]> {
     const config = {

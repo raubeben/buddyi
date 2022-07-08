@@ -1,4 +1,4 @@
-import { getAllVeranstaltungen, addNewVeranstaltung, updateVeranstaltungParticipant, getVeranstaltungById } from "@/api/veranstaltungen";
+import { getAllVeranstaltungen, addNewVeranstaltung, updateVeranstaltungParticipant } from "@/api/veranstaltungen";
 import { Veranstaltung } from "@/model/veranstaltung";
 import { onUpdated, ref } from 'vue';
 

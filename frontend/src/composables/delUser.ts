@@ -1,6 +1,5 @@
 import { deleteParticipant } from "@/api/veranstaltungen";
-import { Veranstaltung } from "@/model/veranstaltung";
-import { onMounted, ref } from 'vue';
+import { onMounted } from 'vue';
 
 export function delUser() {
 

@@ -1,4 +1,3 @@
-import { getAllVeranstaltungenUser } from "@/api/veranstaltungen";
 import { Veranstaltung } from "@/model/veranstaltung";
 import { ref } from 'vue';
 import { getVeranstaltungById } from "@/api/veranstaltungen";
