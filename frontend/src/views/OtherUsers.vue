@@ -5,7 +5,7 @@
                 <ion-button slot="start">
                     <ion-back-button default-href="/tabs/events"></ion-back-button>
                 </ion-button>
-                <ion-title slot="end"><i>User-Info</i></ion-title>
+                
                 <!-- Profilbild -->
                 <ion-item>
                     <!-- User Information via @/composables/useUserinformationen -->
@@ -13,6 +13,7 @@
                     <ion-avatar slot="end">
                         <ion-img src="assets/img/ppic.png"></ion-img>
                     </ion-avatar>
+                    <ion-label slot="end"><i> Profil von {{ otherusrinform.vorname }}</i></ion-label>
                 </ion-item>
             </ion-toolbar>
         </ion-header>
