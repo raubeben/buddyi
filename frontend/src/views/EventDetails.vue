@@ -36,7 +36,7 @@
         </ul>
       </ion-item>
 
-      <ion-button color="success" @click="updateParticipant(veranstaltung); submitAlert(); reloadPage()">
+      <ion-button v-if="!isHidden" color="success" @click="updateParticipant(veranstaltung); submitAlert(); hideButton()">
         <strong>Am Event teilnehmen</strong>
       </ion-button>
     </ion-content>
@@ -58,6 +58,7 @@ import {
 
 import { useVeranstaltungById } from "@/composables/useVeranstaltungById";
 import { useVeranstaltungen } from "@/composables/useVeranstaltungen";
+import { useUserinformationen } from "@/composables/useUserinformationen";
 import { useRoute } from "vue-router";
 
 export default {
@@ -73,19 +74,42 @@ export default {
     IonBackButton,
   },
 
+  data() {
+    return {
+      isHidden: false,
+    };
+  },
+
   methods: {
     async submitAlert() {
       const alert = await alertController.create({
         header: "Event-Anmeldung",
         subHeader: "",
-        message: "Erfolgreich angemeldet!",
-        buttons: ["OK"],
+        message: "Erfolgreich angemeldet! Sie werden in Kürze weitergeleitet.",
       });
       await alert.present();
+      setTimeout(() => {this.reloadPage();},3000);
     },
+
     reloadPage() {
       window.location.reload();
-    }
+    },
+
+    hideButton(){
+      this.getVeranstaltungId(this.id);
+      this.getUserinform();
+      for(let i = 0; i < Object.keys(this.veranstaltung.users).length; i++){
+        let condition = false;
+        
+        if (this.usrinform.benutzername == this.veranstaltung.users[i].benutzername) {
+          condition = true;
+        }
+
+        if (condition) {
+          this.isHidden = true;
+        }
+      }
+    },
   },
   setup() {
     const {
@@ -103,6 +127,11 @@ export default {
     const route = useRoute();
     const { id } = route.params;
 
+    const {
+      usrinform,
+      getUserinform
+    } = useUserinformationen();
+
     return {
       veranstaltung,
       getVeranstaltungId,
@@ -111,10 +140,12 @@ export default {
       veranstaltungen,
       getVeranstaltungen,
       addVeranstaltung,
+      usrinform,
+      getUserinform,
     };
   },
   mounted() {
-    this.getVeranstaltungId(this.id);
+    this.getVeranstaltungId(this.id).then(this.hideButton);
   },
 };
 </script>
