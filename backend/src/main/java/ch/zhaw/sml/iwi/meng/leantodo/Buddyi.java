@@ -103,33 +103,33 @@ public class Buddyi implements CommandLineRunner {
         r.setRoleName("ROLE_USER");
         roleRepository.save(r);
 
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         Veranstaltung v = new Veranstaltung();
-        v.setBeschreibung("Cooler Abend bla");
+        v.setBeschreibung("Wir werden auf der Schützi wieder die Leidenschaft für den Fussball zelebrieren. Darum sei auch dabei! Wir suchen nämlich noch weitere Spieler. Wir lieben auch neue Gesichter zu sehen - sei willkommen, Bruder!");
         v.setActivity("Fussball");
-        v.setOrt("Winterthur");
-        Date date = format.parse("04/07/2022");
+        v.setOrt("Winterthur, Schützenwiese, Platz 4");
+        Date date = format.parse("30-07-2022 15:30");
         v.setDatum(date);
 
         Veranstaltung v2 = new Veranstaltung();
-        v2.setBeschreibung("Schneller als der Wind");
+        v2.setBeschreibung("Falls du auch den Winterspeck verlieren möchtest, dann bist auch du herzlich eingeladen, um mitzukommen. Wir treffen uns auf den Üetliberg beim Turm.");
         v2.setActivity("Jogging");
-        v2.setOrt("Zürich");
-        Date date2 = format.parse("24/07/2022");
+        v2.setOrt("Zürich, Üetliberg");
+        Date date2 = format.parse("24-07-2022 18:45");
         v2.setDatum(date2);
 
         Veranstaltung v3 = new Veranstaltung();
-        v3.setBeschreibung("Smash it");
-        v3.setActivity("Volleyball");
+        v3.setBeschreibung("Liebst du auch brennende Arme? Dann bist du willkommen an unser Volleyballabend. Wir treffen uns in der Turnhalle beim Schulhaus Moor in Schaffhausen. Wir freuen uns auf dich!");
+        v3.setActivity("Volleyball, Schulhaus Moor");
         v3.setOrt("Schaffhausen");
-        Date date3 = format.parse("16/08/2022");
+        Date date3 = format.parse("16-08-2022 20:15");
         v3.setDatum(date3);
 
         Veranstaltung v4 = new Veranstaltung();
-        v4.setBeschreibung("Smash it");
-        v4.setActivity("Volleyball");
-        v4.setOrt("Schaffhausen");
-        Date date4 = format.parse("31/09/2022");
+        v4.setBeschreibung("Ping-Pong-Ping-Pong...So einfach ist nämlich PingPong nicht. Wenn du richtig PingPong spielen möchtest, dann bist du bei uns am richtigen Platz. Wir treffen uns im Stadtpark neben dem Schulhaus.");
+        v4.setActivity("PingPong");
+        v4.setOrt("Winterthur, Stadtpark");
+        Date date4 = format.parse("31-09-2022 15:00");
         v4.setDatum(date4);
 
         u.getRoles().add(r);
