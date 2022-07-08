@@ -80,12 +80,12 @@ export default {
   methods: {
     async submitAlert() {
       const alert = await alertController.create({
-        header: "Event-Anmeldung",
+        header: "Erfolgreich!",
         subHeader: "",
-        message: "Erfolgreich angemeldet! Sie werden in Kürze weitergeleitet.",
+        message: "Erfolgreich angemeldet! Sie werden in Kürze weitergeleitet...",
       });
       await alert.present();
-      setTimeout(() => { this.reloadPage(); }, 3000);
+      setTimeout(() => { this.reloadPage(); }, 2000);
     },
 
     reloadPage() {

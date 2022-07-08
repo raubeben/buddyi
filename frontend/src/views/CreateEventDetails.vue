@@ -103,10 +103,10 @@ export default {
   methods: {
     async presentAlert() {
       const alert = await alertController.create({
-        header: "Alert",
-        subHeader: "Important message",
-        message: "Dein Event wurde erstellt!",
-        buttons: ["OK"],
+        header: "Erfolgreich!",
+        subHeader: "",
+        message: "Dein Event wurde erstellt! Du wirst weitergeleitet...",
+        //buttons: ["OK"],
       });
       await alert.present();
       setTimeout(() => { this.reloadPage(); }, 2000);
