@@ -49,8 +49,8 @@
           </ion-grid>
         </ion-item>
         <ion-item>
-          <ion-button expand="block" router-link="/tabs/events/create"
-            >Event hinzufügen</ion-button
+          <ion-button class="basicButton" router-link="/tabs/events/create"
+            >Hinzufügen</ion-button
           >
         </ion-item>
       </ion-list>

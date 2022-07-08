@@ -2,10 +2,8 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-title>Event Details: <i>{{ veranstaltung.activity }} in {{ veranstaltung.ort }}</i></ion-title>
-        <ion-button slot="start">
-          <ion-back-button default-href="/tabs/events"></ion-back-button>
-        </ion-button>
+        <ion-title>Event Details - {{ veranstaltung.activity }} in {{ veranstaltung.ort }}</ion-title> 
+          <ion-back-button slot="start" default-href="/tabs/events"></ion-back-button>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
@@ -15,10 +13,8 @@
         </ion-toolbar>
       </ion-header>
 
-      <ion-item color="primary">
-        <ion-label> Sportart: {{ veranstaltung.activity }}</ion-label>
-      </ion-item>
-      <ion-item color="secondary">
+        <ion-list-header class="basicHeader"> Sportart {{ veranstaltung.activity }}</ion-list-header>
+      <ion-item>
         <ion-label> Beschreibung: {{ veranstaltung.beschreibung }}</ion-label>
       </ion-item>
       <ion-item>
@@ -36,8 +32,8 @@
         </ul>
       </ion-item>
 
-      <ion-button v-if="!isHidden" color="success" @click="updateParticipant(veranstaltung); submitAlert(); hideButton()">
-        <strong>Am Event teilnehmen</strong>
+      <ion-button class="basicButton" v-if="!isHidden" @click="updateParticipant(veranstaltung); submitAlert(); hideButton()">
+        <strong>Teilnehmen</strong>
       </ion-button>
     </ion-content>
   </ion-page>

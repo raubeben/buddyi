@@ -1,8 +1,8 @@
 <template>
   <ion-page>
     <ion-header>
-      <ion-toolbar color="secondary">
-        <ion-title>Create New Event</ion-title>
+      <ion-toolbar>
+        <ion-title>Event erstellen</ion-title>
         <ion-buttons slot="start">
           <ion-back-button default-href="/tabs/events"></ion-back-button>
         </ion-buttons>
@@ -49,7 +49,7 @@
               <ion-col>
                 <ion-input
                   type="text"
-                  placeholder="Eventlocation"
+                  placeholder="Event Standort"
                   v-model="newVeranstaltung.ort"
                 ></ion-input>
               </ion-col>
@@ -71,12 +71,12 @@
       </ion-list>
 
       <div padding>
-        <ion-button
+        <ion-button class="basicButton"
           @click="
             addVeranstaltung();
             presentAlert();
           "
-          >Create</ion-button
+          >Hinzufügen</ion-button
         >
       </div>
     </ion-content>

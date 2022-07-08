@@ -3,7 +3,7 @@
     <ion-header :translucent="true">
       <ion-toolbar>
         <ion-title>Profil</ion-title>
-        <ion-item slot="end">
+        <ion-item class="basicProfile" slot="end">
           <ion-avatar>
             <ion-img src="assets/img/ppic.png"></ion-img>
           </ion-avatar>
@@ -27,11 +27,8 @@
 
       <!-- Event-Titel -->
 
-      <ion-list-header color="primary"
-        ><b
-          >Bevorstehende Events: {{ veranstaltungen.length }}</b
-        ></ion-list-header
-      >
+      <ion-list-header class="basicHeader">Bevorstehende Events: {{ veranstaltungen.length }}
+        </ion-list-header>
 
       <!-- Liste der Events -->
       <ion-list>
@@ -64,12 +61,11 @@
                 {{ new Date(uevent.datum).toString().split('G')[0] }}
               </ion-col>
               <ion-col>
-                <ion-button
+                <ion-button class="basicButton"
                   @click="
                     delParticipant(uevent.id);
                     reloadPage();
                   "
-                  color="danger"
                 >
                   Löschen
                 </ion-button>
