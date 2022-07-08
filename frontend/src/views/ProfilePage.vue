@@ -8,9 +8,7 @@
             <ion-img src="assets/img/ppic.png"></ion-img>
           </ion-avatar>
           <!-- User Information via @/composables/useUserinformationen -->
-          <ion-label slot="end"
-            >{{ usrinform.vorname }} {{ usrinform.name }}</ion-label
-          >
+          <ion-label slot="end">{{ usrinform.vorname }} {{ usrinform.name }}</ion-label>
         </ion-item>
       </ion-toolbar>
     </ion-header>
@@ -20,16 +18,9 @@
           <ion-title size="large">Profil</ion-title>
         </ion-toolbar>
       </ion-header>
-      <!-- Profilbild -->
-
-      <!-- Badge -->
-      <!-- TODO: Anzahl Events als Counter -->
-
-      <!-- Event-Titel -->
-
+      <!-- Eventliste mit Counter -->
       <ion-list-header class="basicHeader">Bevorstehende Events: {{ veranstaltungen.length }}
-        </ion-list-header>
-
+      </ion-list-header>
       <!-- Liste der Events -->
       <ion-list>
         <ion-item>
@@ -61,14 +52,7 @@
                 {{ new Date(uevent.datum).toString().split('G')[0] }}
               </ion-col>
               <ion-col>
-                <ion-button class="basicButton"
-                  @click="
-                    delParticipant(uevent.id);
-                    reloadPage();
-                  "
-                >
-                  Löschen
-                </ion-button>
+                <ion-button class="basicButton" @click="delParticipant(uevent.id); reloadPage();">Löschen</ion-button>
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -97,6 +81,7 @@ import {
   IonRow,
   IonCol,
 } from "@ionic/vue";
+
 import { useVeranstaltungenUser } from "@/composables/useVeranstaltungenUser";
 import { useUserinformationen } from "@/composables/useUserinformationen";
 import { delUser } from "@/composables/delUser";
@@ -124,11 +109,19 @@ export default {
     },
   },
   setup() {
-    const { veranstaltungen, getVeranstaltungen } = useVeranstaltungenUser();
+    const {
+      veranstaltungen,
+      getVeranstaltungen
+    } = useVeranstaltungenUser();
 
-    const { usrinform, getUserinform } = useUserinformationen();
+    const {
+      usrinform,
+      getUserinform
+    } = useUserinformationen();
 
-    const { delParticipant } = delUser();
+    const {
+      delParticipant
+    } = delUser();
 
     return {
       veranstaltungen,

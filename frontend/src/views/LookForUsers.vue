@@ -33,8 +33,8 @@ import {
   IonSearchbar,
   IonItem,
   IonList,
-
 } from "@ionic/vue";
+
 import { useUserinformationen } from '@/composables/useUserinformationen';
 
 export default {
