@@ -102,6 +102,10 @@ export default {
 
     const route = useRoute();
     const { id } = route.params;
+          console.log("URL-Eventdet.: ")
+        console.log(route)
+        console.log("PARAMETER-Eventdet.: ")
+        console.log(id)
 
     return {
       veranstaltung,

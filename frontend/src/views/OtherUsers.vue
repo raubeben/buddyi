@@ -5,7 +5,7 @@
                 <ion-button slot="start">
                     <ion-back-button default-href="/tabs/events"></ion-back-button>
                 </ion-button>
-                <ion-title slot="end"><i>{{ otherusrinform.vorname }}</i></ion-title>
+                <ion-title slot="end"><i>User-Info</i></ion-title>
                 <!-- Profilbild -->
                 <ion-item>
                     <!-- User Information via @/composables/useUserinformationen -->
@@ -18,27 +18,17 @@
         </ion-header>
         <ion-content :fullscreen="true">
             <ion-header collapse="condense">
-                <ion-title slot="end"><i></i></ion-title>
+                <ion-title slot="end"><i>User-Info</i></ion-title>
             </ion-header>
-            <!-- Event-Titel -->
-            <ion-item>
-                <ion-list-header color="primary"><b>Eingetragene Events</b></ion-list-header>
+            <ion-item color="primary">
+                <ion-label> Name: {{ otherusrinform.vorname }} {{ otherusrinform.name }}</ion-label>
             </ion-item>
-            <!-- Liste der Events -->
-            <ion-list>
-                <ion-item>
-                    <ion-grid>
-                        <!-- Ueberschrift der Listenelemente-->
-                        <ion-row>
-                            <ion-col><b>Sportart</b></ion-col>
-                            <ion-col><b>Beschreibung</b></ion-col>
-                            <ion-col><b>Wo</b></ion-col>
-                            <ion-col><b>Wann</b></ion-col>
-                            <ion-col><b>{{otherusrinform}}</b></ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-item>
-            </ion-list>
+            <ion-item color="secondary">
+                <ion-label> Geschlecht: {{ otherusrinform.geschlecht }}</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label> Kontakt: {{ otherusrinform.telefonnummer }}</ion-label>
+            </ion-item>
         </ion-content>
     </ion-page>
 </template>
@@ -54,12 +44,11 @@ import {
     IonLabel,
     IonItem,
     IonAvatar,
-    IonListHeader,
     IonButton,
-    IonBackButton
+    IonBackButton,
 } from '@ionic/vue';
 import { useUserinformationen } from '@/composables/useUserinformationen';
-import { useRoute } from "vue-router";
+import { useRoute } from 'vue-router';
 
 export default {
     name: 'OtherUsers',
@@ -73,32 +62,26 @@ export default {
         IonLabel,
         IonItem,
         IonAvatar,
-        IonListHeader,
         IonButton,
         IonBackButton
     },
-    methods: {
-        reloadPage() {
-            window.location.reload();
-        },
-    },
     setup() {
+        const route = useRoute();
+        const { user } = route.params;
+
         const {
             otherusrinform,
             getOtherUserinform
         } = useUserinformationen();
 
-        const route = useRoute();
-        const { otheruserid } = route.params;
-
         return {
             otherusrinform,
             getOtherUserinform,
-            otheruserid
+            user
         }
     },
     mounted() {
-        this.getOtherUserinform(this.otheruserid);
+        this.getOtherUserinform(this.user);
     },
 };
 </script>
