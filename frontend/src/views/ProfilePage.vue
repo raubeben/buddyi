@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-header :translucent="true">
-      <ion-toolbar>
+      <ion-toolbar color="secondary">
         <ion-title>Profil</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -26,7 +26,9 @@
       </ion-item>
       <!-- Event-Titel -->
       <ion-item>
-        <ion-list-header color="primary"><b>Bevorstehende Events</b></ion-list-header>
+        <ion-list-header color="primary"
+          ><b>Bevorstehende Events</b></ion-list-header
+        >
       </ion-item>
       <!-- Liste der Events -->
       <ion-list>
@@ -44,13 +46,35 @@
         </ion-item>
         <!-- Alle eingetragenen Events als Liste via @/composables/useVeranstaltungenUser -->
         <ion-item v-bind:key="uevent" v-for="uevent in veranstaltungen">
-          <ion-label>{{ uevent.activity }}</ion-label>
-          <ion-label>{{ uevent.beschreibung }}</ion-label>
-          <ion-label>{{ uevent.ort }}</ion-label>
-          <ion-label>{{ uevent.datum }}</ion-label>
-          <ion-button @click="delParticipant(uevent.id); reloadPage()" size="small" color="danger">
-            <ion-icon name="close-outline"></ion-icon>
-          </ion-button>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                {{ uevent.activity }}
+              </ion-col>
+              <ion-col>
+                {{ uevent.beschreibung }}
+              </ion-col>
+              <ion-col>
+                {{ uevent.ort }}
+              </ion-col>
+              <ion-col>
+                {{ uevent.datum }}
+              </ion-col>
+              <ion-col>
+                <ion-button
+                  @click="
+                    delParticipant(uevent.id);
+                    reloadPage();
+                  "
+                  size="big"
+                  color="danger"
+                >
+                  Löschen
+                </ion-button>
+                
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </ion-item>
       </ion-list>
     </ion-content>
@@ -70,14 +94,17 @@ import {
   IonItem,
   IonAvatar,
   IonListHeader,
-  IonIcon
-} from '@ionic/vue';
-import { useVeranstaltungenUser } from '@/composables/useVeranstaltungenUser';
-import { useUserinformationen } from '@/composables/useUserinformationen';
-import { delUser } from '@/composables/delUser';
+  IonGrid,
+  IonRow,
+  IonCol,
+  
+} from "@ionic/vue";
+import { useVeranstaltungenUser } from "@/composables/useVeranstaltungenUser";
+import { useUserinformationen } from "@/composables/useUserinformationen";
+import { delUser } from "@/composables/delUser";
 
 export default {
-  name: 'Profile',
+  name: "Profile",
   components: {
     IonHeader,
     IonToolbar,
@@ -90,7 +117,10 @@ export default {
     IonItem,
     IonAvatar,
     IonListHeader,
-    IonIcon
+    IonGrid,
+    IonRow,
+    IonCol,
+    
   },
   methods: {
     reloadPage() {
@@ -98,27 +128,19 @@ export default {
     },
   },
   setup() {
-    const {
-      veranstaltungen,
-      getVeranstaltungen
-    } = useVeranstaltungenUser();
+    const { veranstaltungen, getVeranstaltungen } = useVeranstaltungenUser();
 
-    const {
-      usrinform,
-      getUserinform
-    } = useUserinformationen();
+    const { usrinform, getUserinform } = useUserinformationen();
 
-    const {
-      delParticipant
-    } = delUser();
+    const { delParticipant } = delUser();
 
     return {
       veranstaltungen,
       getVeranstaltungen,
       usrinform,
       getUserinform,
-      delParticipant
-    }
+      delParticipant,
+    };
   },
 };
 </script>

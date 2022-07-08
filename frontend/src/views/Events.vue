@@ -16,7 +16,6 @@
         <ion-item>
           <ion-grid>
             <ion-row>
-              <ion-col><b>ID</b></ion-col>
               <ion-col><b>Event</b></ion-col>
               <ion-col><b>Beschreibung</b></ion-col>
               <ion-col><b>Ort</b></ion-col>
@@ -24,12 +23,14 @@
             </ion-row>
           </ion-grid>
         </ion-item>
-        <ion-item :key="veran" v-for="veran in veranstaltungen" button :router-link="'events/' + veran.id">
+        <ion-item
+          :key="veran"
+          v-for="veran in veranstaltungen"
+          button
+          :router-link="'events/' + veran.id"
+        >
           <ion-grid>
             <ion-row>
-              <ion-col>
-                {{ veran.id }}
-              </ion-col>
               <ion-col>
                 {{ veran.activity }}
               </ion-col>
@@ -40,17 +41,20 @@
                 {{ veran.ort }}
               </ion-col>
               <ion-col>
-                <ul><li :key="user" v-for="user in veran.users">{{user.vorname}}</li></ul>
+                <li :key="user" v-for="user in veran.users">
+                  {{ user.vorname }}
+                </li>
               </ion-col>
-              
             </ion-row>
           </ion-grid>
         </ion-item>
+        <ion-item>
+          <ion-button expand="block" router-link="/tabs/events/create"
+            >Add New Event</ion-button
+          >
+        </ion-item>
       </ion-list>
-      
-      <div padding>
-        <ion-button router-link="/tabs/events/create">Add New Event</ion-button>
-      </div>
+
       <div padding>
         <ion-img src="assets/img/hintergrund_events.jpg"></ion-img>
       </div>
@@ -71,7 +75,7 @@ import {
   IonItem,
   IonList,
   IonButton,
-  IonImg
+  IonImg,
 } from "@ionic/vue";
 import { useVeranstaltungen } from "@/composables/useVeranstaltungen";
 
@@ -92,10 +96,10 @@ export default {
     IonImg,
   },
   setup() {
-    const { newVeranstaltung, veranstaltungen, getVeranstaltungen, } =
+    const { newVeranstaltung, veranstaltungen, getVeranstaltungen } =
       useVeranstaltungen();
 
     return { newVeranstaltung, veranstaltungen, getVeranstaltungen };
-  }
+  },
 };
 </script>
