@@ -125,6 +125,13 @@ public class Buddyi implements CommandLineRunner {
         Date date3 = format.parse("16/08/2022");
         v3.setDatum(date3);
 
+        Veranstaltung v4 = new Veranstaltung();
+        v4.setBeschreibung("Smash it");
+        v4.setActivity("Volleyball");
+        v4.setOrt("Schaffhausen");
+        Date date4 = format.parse("31/09/2022");
+        v4.setDatum(date4);
+
         u.getRoles().add(r);
         u2.getRoles().add(r);
         u3.getRoles().add(r);
@@ -144,5 +151,6 @@ public class Buddyi implements CommandLineRunner {
         veranstaltungRepository.save(v);
         veranstaltungRepository.save(v2);
         veranstaltungRepository.save(v3);
+        veranstaltungRepository.save(v4);
     }
 }
