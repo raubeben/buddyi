@@ -19,10 +19,10 @@
             </ion-header>
                 <ion-list-header class="basicHeader"> {{ otherusrinform.vorname }} {{ otherusrinform.name }}</ion-list-header>
             <ion-item>
-                <ion-label> Geschlecht: {{ otherusrinform.geschlecht }}</ion-label>
+                <ion-label><b>Geschlecht: </b> {{ otherusrinform.geschlecht }}</ion-label>
             </ion-item>
             <ion-item>
-                <ion-label> Kontakt: {{ otherusrinform.telefonnummer }}</ion-label>
+                <ion-label> <b>Kontakt: </b>{{ otherusrinform.telefonnummer }}</ion-label>
             </ion-item>
         </ion-content>
     </ion-page>

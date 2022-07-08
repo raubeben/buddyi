@@ -16,6 +16,9 @@
           {{ user.vorname }} {{ user.name }}
         </ion-item>
       </ion-list>
+      <div padding>
+        <ion-img src="assets/img/weltklassezurich.jpg"></ion-img>
+      </div>
     </ion-content>
   </ion-page>
 </template>

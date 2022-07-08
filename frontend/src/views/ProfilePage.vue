@@ -74,6 +74,9 @@
           </ion-grid>
         </ion-item>
       </ion-list>
+      <div padding>
+        <ion-img style="width: auto; height: 500px;" src="assets/img/profile.png"></ion-img>
+      </div>
     </ion-content>
   </ion-page>
 </template>

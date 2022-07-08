@@ -12,24 +12,24 @@
           <ion-title size="large">Event-Details</ion-title>
         </ion-toolbar>
       </ion-header>
-
-        <ion-list-header class="basicHeader"> Sportart {{ veranstaltung.activity }}</ion-list-header>
+        <ion-list-header class="basicHeader"> Sportart: {{ veranstaltung.activity }}</ion-list-header>
       <ion-item>
-        <ion-label> Beschreibung: {{ veranstaltung.beschreibung }}</ion-label>
+        <ion-label><b>Beschreibung:</b> {{ veranstaltung.beschreibung }}</ion-label>
       </ion-item>
       <ion-item>
-        <ion-label> Ort: {{ veranstaltung.ort }}</ion-label>
+        <ion-label><b>Ort:</b> {{ veranstaltung.ort }}</ion-label>
       </ion-item>
       <ion-item>
-        <ion-label> Datum und Zeit: {{ new Date(veranstaltung.datum).toString().split('G')[0] }}</ion-label>
+        <ion-label><b>Datum und Zeit:</b>  {{ new Date(veranstaltung.datum).toString().split('G')[0] }}</ion-label>
       </ion-item>
       <ion-item>
-        <ion-label> Teilnehmer: </ion-label>
-        <ul>
-          <li :key="user" v-for="user in veranstaltung.users">
-            {{ user.vorname }}
-          </li>
-        </ul>
+        <ion-label><b>Teilnehmer: </b> 
+          <ul>
+            <li :key="user" v-for="user in veranstaltung.users">
+            {{ user.vorname }} {{ user.name }}
+            </li>
+          </ul>
+        </ion-label>
       </ion-item>
 
       <ion-button class="basicButton" v-if="!isHidden" @click="updateParticipant(veranstaltung); submitAlert(); hideButton()">
